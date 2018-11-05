@@ -30,3 +30,7 @@ The app will not store user data except needed for basic user authentication and
 ## Data Flow
 
 [via Draw.io](https://drive.google.com/file/d/1IFFtjAH4dUni1PaxVeMAQhD2gnpLQGjW/view?usp=sharing)
+
+## DB Schema
+
+[via Draw.io](https://drive.google.com/file/d/1eHAOgXhjIG1nHJZCODZFJXvgQngcCMjT/view?usp=sharing)
