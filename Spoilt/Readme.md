@@ -1,7 +1,7 @@
 ﻿# Spoil The End
 
 ## Description
-The project is a live extensible collection of spoilers for films/series/books and it should answer the simple question: What are the big twists present in popular television series/books/video games?
+The project is a live extensible collection of spoilers for movies and it should answer the simple question: What are the big twists present in popular films?
 
 ## Deployment
 
@@ -13,28 +13,36 @@ The project is a live extensible collection of spoilers for films/series/books a
 
 ## Getting started
 
+## Data Flow
+
+[via Draw.io](https://drive.google.com/file/d/1IFFtjAH4dUni1PaxVeMAQhD2gnpLQGjW/view?usp=sharing)
+
+## DB Schema
+
+[via Draw.io](https://drive.google.com/file/d/1eHAOgXhjIG1nHJZCODZFJXvgQngcCMjT/view?usp=sharing)
+
+## Front-End Wireframes
+
+[View Front End Wireframes Here!](https://drive.google.com/file/d/1xYxxaKeHhpdsocGPuocCbg6nVn7sNYcc/view)
+
 ## Tech stack
 
-Languages and Frameworks: C#, .NET Core, MVC, Entity, Razor, HTML, CSS, Bootstrap, Javascript,  JQuery.
+Languages and Frameworks: C#, .NET Core, MVC, Entity, Razor, HTML, CSS, Bootstrap, Javascript,  JQuery, SASS
 DB: SQL Server.
 Frontend Server: IIS.
 API tests and documentation: Postman.
 
 ## User stories
 
-1. As a user, I want to add spoilers to the films/books/events/games, so that everybody could come and see what would be in the epilogue.
-    - The site has an input field/fields for entering the text of the spoiler.
-    - The site saves entered spoiler.
-    - I can return to overlook all my spoilers.
-    - I can edit any of my spoilers.
-    - I can delete my spoilers.
-2. As a user, I can have the ability to add posters, related to the topic of my spoiler, so that I can easily distinguish each spoiler.
-    - I can search for posters by topic title (movie).
-    - I can associate the poster I've found with a spoiler.
-    - I can dissociate the poster with a spoiler if they don't match.
+1. As a user, I want to search the site's database to see if a movie has any spoilers so I know if the spoiler I want to add has already been documented.
+    - I can search the site for movies in the database. If a movie is already included, I can click on that movie and see all of the spoilers users have submitted for that movie.
+    - If a movie is not already in the database, I will get information provided by the OMDB API. 
+2. As a user, I want to add spoilers to movies so that everybody can come and find out about the movie's ending and/or twists in the plot.
+    - I can enter a spoiler into a text field and save it so that it will be displayed with all of the other user-submitted spoilers for that particular movie.
+    - If the movie was not already saved into the database, certain OMDB data will be saved, inlucding the movie title, plot synopsis, IMDB id, and poster. 
 3. As a developer, I want to use MVC framework, so that I can get the working skeleton of the app.
     - API and Front-end implemented using a model-view-controller approach.
-    - Dependency injection pattern exploited for controllers implementation.
+    - Dependency injection pattern exploited for controller implementation.
 4. As a developer, I want to use EF code first approach, so the framework would deal with DB stuff.
     - SQL server setup implemented through models.
     - CRUD operations work from the box in scaffolded controllers/view.
