@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Spoilt.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class SpoiltDbContext : IdentityDbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public SpoiltDbContext(DbContextOptions<SpoiltDbContext> options)
             : base(options)
         {
         }
