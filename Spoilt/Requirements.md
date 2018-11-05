@@ -28,4 +28,5 @@ The app will not store user data except needed for basic user authentication and
 2. The front and back end parts should have unit tests covering all endpoints (API) and controllers (UI). 
 
 ## Data Flow
-Describe the flow of data in your application. This should describe what happens from the time the user hits the site, to the time the request process completes.
+
+[via Draw.io](https://drive.google.com/file/d/1IFFtjAH4dUni1PaxVeMAQhD2gnpLQGjW/view?usp=sharing)
