@@ -14,6 +14,7 @@ namespace Spoilt.Models.ViewModels
         public string Genre { get; set; }
         public string PosterUrl { get; set; }
 
+        // Collection of spoilers that belong to a particular movie
         public ICollection<Spoiler> Spoilers { get; set; }
     }
 }
