@@ -24,12 +24,32 @@ namespace Spoilt.Models.Services
                     result = await response.Content.ReadAsAsync<IEnumerable<Movie>>();
                 }
                 return result;
+
             }
+
         }
 
-        public Task<IEnumerable<Movie>> GetMoviesByTitle(string title)
+        public async Task<IEnumerable<Movie>> GetMoviesByTitle(string title)
         {
-            throw new NotImplementedException();
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://spoiltapi.azurewebsites.net");
+                var response = await client.GetAsync($"/api/movies/search?term={title}");
+                List<Movie> result = new List<Movie>();
+                if (response.IsSuccessStatusCode)
+                {
+                    var omdbResult = await response.Content.ReadAsAsync<OMDB>();
+                    foreach(var movieResult in omdbResult.Search)
+                    {
+                        Movie movie = new Movie();
+                        movie.ID = movieResult.ImdbID;
+                        movie.Title = movieResult.Title;
+                        movie.PosterUrl = movieResult.Poster;
+                        result.Add(movie);
+                    }
+                }
+                return result;
+            }
         }
 
         public Task<Movie> GetMovieById(string id)
