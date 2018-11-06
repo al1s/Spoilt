@@ -3,13 +3,22 @@
 <div>
     <h4>Movie</h4>
     <hr />
-    <div class="media-object__img">
-        <img alt="Poster for @Model.Title" class="img" src="@Model.PosterUrl" />
-    </div>
-    <div class="media-object__data">
-        <p class="data__header">@Model.Title</p>
-        <p class="data__text">@Model.Genre</p>
-        <p class="data__text">@Model.Plot</p>
+</div>
+<div class="col s12 m7">
+    <h2 class="header">@Model.Title</h2>
+    <div class="card horizontal">
+        <div class="card-image">
+            <img alt="@Model.Title" src="@Model.PosterUrl">
+        </div>
+        <div class="card-stacked">
+            <div class="card-content">
+                <p>@Model.Genre</p>
+                <p>@Model.Plot</p>
+            </div>
+            <div class="card-action">
+                <a href="#">This is a link</a>
+            </div>
+        </div>
     </div>
 </div>
 <div>
