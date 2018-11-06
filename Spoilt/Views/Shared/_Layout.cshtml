@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Spoilt @ViewBag.Title</title>
+    <link href="~/css/app.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <nav>
+        @Html.ActionLink("Search Movies", "Index", "Movies")
+        @Html.ActionLink("More Info", "Index", "About")
+    </nav>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
