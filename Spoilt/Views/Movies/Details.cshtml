@@ -4,10 +4,10 @@
     Layout = "_Layout";
 }
 
-@Html.PartialAsync("../Shared/_MovieCard", Model.Movie)
+@await Html.PartialAsync("../Shared/_MovieCard", Model.Movie)
 @foreach (Spoiler spoiler in Model.Spoilers)
 {
-    @Html.PartialAsync("../Shared/_Spoiler", spoiler)
+    @await Html.PartialAsync("../Shared/_Spoiler", spoiler)
 }
 
 <a asp-controller="Spoilers" asp-action="Create" asp-route-id="@Model.Movie.ID"  class="btn">Add spoiler!</a>
