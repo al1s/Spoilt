@@ -22,13 +22,15 @@ namespace Spoilt.Controllers
         public async Task<IActionResult> Index()
         {
             var myMovies = await _movie.GetMovies();
-            return View(myMovies);
-        }
-
-        public IActionResult Details(string id)
-        {
+            if (myMovies != null) return View(myMovies);
             return View();
         }
+
+        //public IActionResult Details(string id)
+        //{
+        //    return View();
+        //}
+
         public IActionResult Details()
         {
             Movie movie = new Movie
