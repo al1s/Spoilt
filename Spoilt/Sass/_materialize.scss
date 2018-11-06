@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 // Color
 @import "components/color-variables";
@@ -29,6 +29,13 @@
 @import "components/collapsible";
 @import "components/chips";
 @import "components/materialbox";
+@import "components/forms/forms";
+@import "components/forms/checkboxes";
+@import "components/forms/file-input";
+@import "components/forms/radio-buttons";
+@import "components/forms/range";
+@import "components/forms/select";
+@import "components/forms/switches";
 @import "components/forms/forms";
 @import "components/table_of_contents";
 @import "components/sidenav";

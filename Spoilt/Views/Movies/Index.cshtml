@@ -8,6 +8,10 @@
 
 <p>Consider this your Spoiler Warning</p>
 
+@{
+    await Html.RenderPartialAsync("/Views/Shared/_SearchBar.cshtml");
+}
+
 <ul>
     @foreach(var item in Model)
     {
