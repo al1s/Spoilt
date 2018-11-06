@@ -11,7 +11,6 @@ namespace Spoilt.Models
         public int ID { get; set; }
         public string MovieID { get; set; }
         public int SpoilerID { get; set; }
-        public int Count { get => 1; }
 
         // Navigation props
         public Session Session { get; set; }

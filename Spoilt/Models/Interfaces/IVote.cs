@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 
 namespace Spoilt.Models.Interfaces
 {
-    public class IVote
+    interface IVote
     {
+        Task<Vote> AddVote(string movieID, int spoilerID);
+        Task<Vote> DeleteVote(int id);
     }
 }
