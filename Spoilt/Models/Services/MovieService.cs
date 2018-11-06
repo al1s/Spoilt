@@ -24,7 +24,9 @@ namespace Spoilt.Models.Services
                     result = await response.Content.ReadAsAsync<IEnumerable<Movie>>();
                 }
                 return result;
-            } 
+
+            }
+
         }
 
         public async Task<IEnumerable<Movie>> GetMoviesByTitle(string title)

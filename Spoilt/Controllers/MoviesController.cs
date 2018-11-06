@@ -37,6 +37,12 @@ namespace Spoilt.Controllers
         {
             return View();
         }
+
+        //public IActionResult Details(string id)
+        //{
+        //    return View();
+        //}
+
         public IActionResult Details()
         {
             Movie movie = new Movie
