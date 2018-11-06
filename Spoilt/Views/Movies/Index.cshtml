@@ -1,6 +1,4 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<Spoilt.Models.Movie>
 @{
     ViewData["Title"] = "Home";
     Layout = "_Layout";
@@ -10,4 +8,15 @@
 
 <p>Consider this your Spoiler Warning</p>
 
-<p>Hello from the Movies Controller</p>
+@{
+    await Html.RenderPartialAsync("/Views/Shared/_SearchBar.cshtml");
+}
+
+<ul>
+    @foreach(var item in Model)
+    {
+        <li>
+            @Html.DisplayFor(modelItem => item.Title)
+        </li>
+    }
+</ul>

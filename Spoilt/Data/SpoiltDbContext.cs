@@ -7,7 +7,7 @@ using Spoilt.Models;
 
 namespace Spoilt.Data
 {
-    public class SpoiltDbContext : IdentityDbContext
+    public class SpoiltDbContext : DbContext
     {
         public SpoiltDbContext(DbContextOptions<SpoiltDbContext> options)
             : base(options)
