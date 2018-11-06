@@ -4,11 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Spoilt.Data;
 
 namespace Spoilt.Controllers
 {
     public class SessionsController : Controller
     {
+        private SpoiltDbContext _context;
+
+        public SessionsController(SpoiltDbContext context)
+        {
+            _context = context;
+        }
+
         // GET: Sessions
         public ActionResult Index()
         {
@@ -53,17 +61,17 @@ namespace Spoilt.Controllers
         // POST: Sessions/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public bool Delete(int id)
         {
             try
             {
-                // TODO: Add delete logic here
 
-                return RedirectToAction(nameof(Index));
+
+                return true;
             }
             catch
             {
-                return View();
+                return false;
             }
         }
     }

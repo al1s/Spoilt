@@ -4,11 +4,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Spoilt.Data;
 
 namespace Spoilt.Controllers
 {
     public class VotesController : Controller
     {
+        private SpoiltDbContext _context;
+
+        public VotesController(SpoiltDbContext context)
+        {
+            _context = context;
+        }
+
         // GET: Votes
         public ActionResult Index()
         {
