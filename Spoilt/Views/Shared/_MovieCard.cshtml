@@ -4,23 +4,23 @@
     <h4>Movie</h4>
     <hr />
 </div>
-<div class="col s12 m7">
-    <h2 class="header">@Model.Title</h2>
-    <div class="card horizontal">
-        <div class="card-image">
-            <img alt="@Model.Title" src="@Model.PosterUrl">
-        </div>
-        <div class="card-stacked">
-            <div class="card-content">
-                <p>@Model.Genre</p>
-                <p>@Model.Plot</p>
+
+<div class="row">
+    <div class="col s12 m6">
+        <div class="card">
+            <div class="card-image">
+                <img alt="@Model.Title" src="@Model.PosterUrl">
+                <span class="card-title">@Model.Title</span>
+                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">+</i></a>
             </div>
-            <div class="card-action">
-                <a href="#">This is a link</a>
+            <div class="card-content">
+                <p>@Html.DisplayNameFor(model => model.Genre): @Model.Genre</p>
+                <p>@Html.DisplayNameFor(model => model.Plot): @Model.Plot</p>
             </div>
         </div>
     </div>
 </div>
+
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
