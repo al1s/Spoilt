@@ -1,0 +1,17 @@
+﻿@model Spoilt.Models.Movie
+
+<div>
+    <h4>Movie</h4>
+    <hr />
+    <div class="media-object__img">
+        <img alt="Poster for @Model.Title" class="img" src="@Model.PosterUrl" />
+    </div>
+    <div class="media-object__data">
+        <p class="data__header">@Model.Title</p>
+        <p class="data__text">@Model.Genre</p>
+        <p class="data__text">@Model.Plot</p>
+    </div>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
