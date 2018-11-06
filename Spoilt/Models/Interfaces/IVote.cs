@@ -8,6 +8,6 @@ namespace Spoilt.Models.Interfaces
     interface IVote
     {
         Task<Vote> AddVote(string movieID, int spoilerID);
-        Task<Vote> DeleteVote(int id);
+        Task DeleteVote(int id);
     }
 }
