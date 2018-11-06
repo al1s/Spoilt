@@ -6,7 +6,16 @@ using Spoilt.Models.Interfaces;
 
 namespace Spoilt.Models.Services
 {
-    public class VoteService
+    public class VoteService : IVote
     {
+        Task<Vote> IVote.AddVote(string movieID, int spoilerID)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Vote> IVote.DeleteVote(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

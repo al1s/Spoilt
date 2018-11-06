@@ -8,5 +8,9 @@ namespace Spoilt.Models.Services
 {
     public class SessionService : ISession
     {
+        Task<Session> ISession.CreateSessionString()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
