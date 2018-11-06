@@ -19,10 +19,22 @@ namespace Spoilt.Controllers
             _movie = movieInterface;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string title)
         {
-            var myMovies = await _movie.GetMovies();
-            if (myMovies != null) return View(myMovies);
+            if (title != null)
+            {
+                var myMovies = await _movie.GetMoviesByTitle(title);
+                return View(myMovies);
+            }
+            else
+            {
+                var myMovies = await _movie.GetMovies();
+                return View(myMovies);
+            }
+        }
+
+        public IActionResult Details(string id)
+        {
             return View();
         }
 
