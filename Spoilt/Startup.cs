@@ -32,7 +32,7 @@ namespace Spoilt
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<IMovie, MovieService>();
-            services.AddTransient<Models.Interfaces.ISession, SessionService>();
+            services.AddTransient<ISession, SessionService>();
             services.AddTransient<IVote, VoteService>();
         }
 
