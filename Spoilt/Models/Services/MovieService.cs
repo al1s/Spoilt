@@ -44,7 +44,7 @@ namespace Spoilt.Models.Services
                         Movie movie = new Movie();
                         movie.ID = movieResult.ImdbID;
                         movie.Title = movieResult.Title;
-                        movie.PosterUrl = movieResult.Poster;
+                        movie.Poster = movieResult.Poster;
                         result.Add(movie);
                     }
                 }
@@ -52,9 +52,20 @@ namespace Spoilt.Models.Services
             }
         }
 
-        public Task<Movie> GetMovieById(string id)
+        public async Task<Movie> GetMovieById(string id)
         {
-            throw new NotImplementedException();
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://spoiltapi.azurewebsites.net");
+                var response = await client.GetAsync($"/api/movies/{id}");
+                Movie result = new Movie();
+                if (response.IsSuccessStatusCode)
+                {
+                    result = await response.Content.ReadAsAsync<Movie>();
+                    Console.WriteLine("Hi");
+                }
+                return result;
+            }
         }
     }
 }
