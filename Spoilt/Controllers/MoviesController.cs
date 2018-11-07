@@ -10,10 +10,10 @@ namespace Spoilt.Controllers
         private readonly IMovie _movies;
         private readonly IVote _votes;
 
-        public MoviesController(IMovie movieService, IVote voteService)
+        public MoviesController(IMovie movieService)
         {
             _movies = movieService;
-            _votes = voteService;
+            //_votes = voteService;
         }
 
         public async Task<IActionResult> Index(string title)

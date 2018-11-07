@@ -2,7 +2,7 @@
 
 namespace Spoilt.Models.Interfaces
 {
-    public interface IUserSession
+    public interface IUserSession : IServiceProvider
     {
         Task<UserSession> CreateSessionString();
     }
