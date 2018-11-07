@@ -4,16 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Spoilt.Data;
-using Spoilt.Models.Services;
+using Spoilt.Models;
+using Spoilt.Models.Interfaces;
 
 namespace Spoilt.Controllers
 {
     public class SessionsController : Controller
     {
-        private ISession _session;
+        private Models.Interfaces.ISession _session;
 
-        public SessionsController(ISession context)
+        public SessionsController(Models.Interfaces.ISession context)
         {
             _session = context;
         }
@@ -23,20 +23,7 @@ namespace Spoilt.Controllers
         [ValidateAntiForgeryToken]
         public async Task Create()
         {
-            _session.Create()
-        }
-
-        // GET: Sessions/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Sessions/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public bool Delete(int id)
-        {
+            await _session.CreateSessionString();
         }
     }
 }
