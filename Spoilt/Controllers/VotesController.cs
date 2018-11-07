@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Spoilt.Data;
-using Spoilt.Models.Services;
+using Spoilt.Models;
 
 namespace Spoilt.Controllers
 {
@@ -21,24 +21,10 @@ namespace Spoilt.Controllers
         // POST: Votes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task Create([Bind("ID,MovieID,SpoilerID,SessionID")] Vote vote)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Votes/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
+            _votes.Votes.Add(vote);
+            await _votes.SaveChangesAsync();
         }
 
         // POST: Votes/Delete/5
