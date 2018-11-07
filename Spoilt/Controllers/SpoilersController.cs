@@ -20,7 +20,7 @@ namespace Spoilt.Controllers
 
         public async Task<IActionResult> Create(string id)
         {
-            var movie = await _movie.GetMovieById(id);
+            Movie movie = await _movie.GetMovieById(id);
             ViewBag.Movie = movie;
             return View();
         }
@@ -54,7 +54,8 @@ namespace Spoilt.Controllers
                 return RedirectToAction("Details", "Movies", new { id = id });
             }
             var movie = await _movie.GetMovieById(id);
-            return View(movie);
+            ViewBag.Movie = movie;
+            return View();
         }
 
         public async Task<IActionResult> Edit(int id)
