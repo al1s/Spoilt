@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Spoilt.Models;
+﻿using Microsoft.AspNetCore.Mvc;
 using Spoilt.Models.Interfaces;
-using Spoilt.Models.Services;
-using Spoilt.Models.ViewModels;
+using System.Threading.Tasks;
 
 namespace Spoilt.Controllers
 {

@@ -1,8 +1,6 @@
 ﻿using Spoilt.Models.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -39,7 +37,7 @@ namespace Spoilt.Models.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var omdbResult = await response.Content.ReadAsAsync<OMDB>();
-                    foreach(var movieResult in omdbResult.Search)
+                    foreach (var movieResult in omdbResult.Search)
                     {
                         Movie movie = new Movie();
                         movie.ID = movieResult.ImdbID;

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Spoilt.Data;
 using Spoilt.Models.Interfaces;
-using Spoilt.Models;
-using Spoilt.Data;
+using System.Threading.Tasks;
 
 namespace Spoilt.Models.Services
 {
