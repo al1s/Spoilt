@@ -4,11 +4,18 @@
         <div class="card-image">
             <img alt="@Model.Title" src="@Model.Poster">
             <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">+</i></a>
+            <a asp-action="Create"
+               asp-controller="Spoilers"
+               asp-route-id="@Model.ID"
+               class="btn-floating halfway-fab waves-effect waves-light red">
+                <i class="material-icons">+</i>
+            </a>
         </div>
         <div class="card-content">
             <span class="card-title">@Model.Title</span>
             <p>@Html.DisplayNameFor(model => model.Genre): @Model.Genre</p>
             <p>@Html.DisplayNameFor(model => model.Plot): @Model.Plot</p>
+            <a asp-action="Details" asp-controller="Movies" asp-route-id="@Model.ID">Details</a>
         </div>
     </div>
 </div>

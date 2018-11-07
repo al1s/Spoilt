@@ -1,13 +1,21 @@
 ﻿@model Spoilt.Models.Movie;
-    @{
-        ViewData["Title"] = "Movie Details";
-        Layout = "_Layout";
-    }
+@{
+    ViewData["Title"] = "Movie Details";
+    Layout = "_Layout";
+}
 
-    @await Html.PartialAsync("../Shared/_MovieCard", Model)
-    @foreach (Spoiler spoiler in Model.Spoilers)
-    {
-        @await Html.PartialAsync("../Shared/_Spoiler", spoiler)
-    }
+@section Scripts {
+    <script>
+        console.log("Testing");
+    </script>
+}
 
-    <a asp-controller="Spoilers" asp-action="Create" asp-route-id="@Model.ID"  class="btn">Add spoiler!</a>
+@await Html.PartialAsync("../Shared/_MovieDetails", Model)
+
+<a asp-controller="Spoilers" asp-action="Create" asp-route-id="@Model.ID" class="btn">Add spoiler!</a>
+
+@foreach (Spoiler spoiler in Model.Spoilers)
+{
+    @await Html.PartialAsync("../Shared/_Spoiler", spoiler)
+}
+
