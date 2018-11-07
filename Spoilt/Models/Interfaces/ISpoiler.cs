@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Spoilt.Models.Interfaces
 {
-    interface ISpoiler
+    public interface ISpoiler
     {
         // Get Spoilers by MovieId
         Task<IEnumerable<Spoiler>> GetSpoilers(string movieId);
