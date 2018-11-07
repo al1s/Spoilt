@@ -61,3 +61,8 @@ function createUserConnectionId() {
     }
     return str;
 };
+
+$(document).ready(function () {
+    $('.sidenav').sidenav();
+});
+

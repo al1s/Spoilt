@@ -60,8 +60,8 @@ namespace Spoilt.Models.Services
                 if (response.IsSuccessStatusCode)
                 {
                     result = await response.Content.ReadAsAsync<Movie>();
-                    Console.WriteLine("Hi");
                 }
+
                 return result;
             }
         }

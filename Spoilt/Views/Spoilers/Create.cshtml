@@ -1,7 +1,25 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model Spoilt.Models.Spoiler;
 @{
     ViewData["Title"] = "Create Spoiler";
     Layout = "_Layout";
 }
+
+@section Scripts {
+    <script>
+        console.log("Testing");
+    </script>
+}
+
+<h1>Create New Spoiler for @ViewBag.Movie.Title</h1>
+
+<p>@ViewBag.Movie.Plot</p>
+<img src="@ViewBag.Movie.Poster" />
+
+<form asp-action="Create">
+    <label asp-for="SpoilerText">Write your spoiler here: </label>
+    <textarea asp-for="SpoilerText"></textarea>
+    <input type="hidden" asp-for="MovieID" readonly value="@ViewBag.Movie.ID" />
+
+    <input type="submit" value="Create" />
+</form>
+

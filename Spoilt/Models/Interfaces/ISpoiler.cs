@@ -5,10 +5,13 @@ namespace Spoilt.Models.Interfaces
 {
     public interface ISpoiler
     {
-        // Get Spoilers by MovieId
-        Task<IEnumerable<Spoiler>> GetSpoilers(string movieId);
-
         // Add a Spoiler
-        Task<Spoiler> AddOne(Spoiler spoiler);
+        Task<bool> AddOne(Spoiler spoiler);
+
+        // Get one Spoiler
+        Task<Spoiler> GetSpoiler(int id);
+
+        // Update a Spoiler
+        Task<bool> UpdateOne(int id, Spoiler spoiler);
     }
 }
