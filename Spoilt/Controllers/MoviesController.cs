@@ -33,44 +33,40 @@ namespace Spoilt.Controllers
             }
         }
 
-        public IActionResult Details(string id)
+        public async Task<IActionResult> Details(string id)
         {
-            return View();
+            var movie = await _movie.GetMovieById(id);
+            return View(movie);
         }
 
-        //public IActionResult Details(string id)
+        //public IActionResult Details()
         //{
-        //    return View();
+        //    Movie movie = new Movie
+        //    {
+        //        ID = "ID33343",
+        //        Title = "The Matrix",
+        //        Genre = "Action, Sci-Fi",
+        //        Plot = "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers",
+        //        PosterUrl = "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
+        //    };
+        //    MovieSpoilers movieSpoilers = new MovieSpoilers()
+        //    {
+        //        Movie = movie,
+        //        Spoilers = new List<Spoiler>()
+        //        {
+        //            new Spoiler()
+        //            {
+        //                Text = "Neo will die",
+        //                DateTime = DateTime.Now,
+        //            },
+        //            new Spoiler()
+        //            {
+        //                Text = "Zeon will survive"
+        //            }
+        //        }
+
+        //    };
+        //    return View(movieSpoilers);
         //}
-
-        public IActionResult Details()
-        {
-            Movie movie = new Movie
-            {
-                ID = "ID33343",
-                Title = "The Matrix",
-                Genre = "Action, Sci-Fi",
-                Plot = "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers",
-                PosterUrl = "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"
-            };
-            MovieSpoilers movieSpoilers = new MovieSpoilers()
-            {
-                Movie = movie,
-                Spoilers = new List<Spoiler>()
-                {
-                    new Spoiler()
-                    {
-                        Text = "Neo will die",
-                        DateTime = DateTime.Now,
-                    },
-                    new Spoiler()
-                    {
-                        Text = "Zeon will survive"
-                    }
-                }
-
-            };
-            return View(movieSpoilers);
-        }
     }
 }

@@ -21,11 +21,14 @@
     await Html.RenderPartialAsync("/Views/Shared/_SearchBar.cshtml");
 }
 
-<ul>
-    @foreach (var item in Model)
-    {
-        <li>
-            @Html.DisplayFor(modelItem => item.Title)
-        </li>
-    }
-</ul>
+
+<div class="container">
+    <div class="section">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
+            }
+        </div>
+    </div>
+</div>

@@ -1,26 +1,14 @@
 ﻿@model Spoilt.Models.Movie
-
-<div>
-    <h4>Movie</h4>
-    <hr />
-</div>
-
-<div class="row">
-    <div class="col s12 m6">
-        <div class="card">
-            <div class="card-image">
-                <img alt="@Model.Title" src="@Model.PosterUrl">
-                <span class="card-title">@Model.Title</span>
-                <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">+</i></a>
-            </div>
-            <div class="card-content">
-                <p>@Html.DisplayNameFor(model => model.Genre): @Model.Genre</p>
-                <p>@Html.DisplayNameFor(model => model.Plot): @Model.Plot</p>
-            </div>
+<div class="col s12 m4">
+    <div class="card">
+        <div class="card-image">
+            <img alt="@Model.Title" src="@Model.Poster">
+            <span class="card-title">@Model.Title</span>
+            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">+</i></a>
+        </div>
+        <div class="card-content">
+            <p>@Html.DisplayNameFor(model => model.Genre): @Model.Genre</p>
+            <p>@Html.DisplayNameFor(model => model.Plot): @Model.Plot</p>
         </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
