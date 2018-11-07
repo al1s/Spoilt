@@ -5,34 +5,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Spoilt.Data;
+using Spoilt.Models.Services;
 
 namespace Spoilt.Controllers
 {
     public class VotesController : Controller
     {
-        private SpoiltDbContext _context;
+        private SpoiltDbContext _votes;
 
         public VotesController(SpoiltDbContext context)
         {
-            _context = context;
-        }
-
-        // GET: Votes
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Votes/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Votes/Create
-        public ActionResult Create()
-        {
-            return View();
+            _votes = context;
         }
 
         // POST: Votes/Create
@@ -61,17 +44,17 @@ namespace Spoilt.Controllers
         // POST: Votes/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task DeleteConfirmed(int id)
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
+                var vote = _votes.Votes.FirstOrDefault(v => v.ID == id);
+                _votes.Remove(vote);
+                await _votes.SaveChangesAsync();
             }
-            catch
+            catch (Exception)
             {
-                return View();
+                throw;
             }
         }
     }

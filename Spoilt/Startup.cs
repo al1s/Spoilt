@@ -32,6 +32,8 @@ namespace Spoilt
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<IMovie, MovieService>();
+            services.AddTransient<Models.Interfaces.ISession, SessionService>();
+            services.AddTransient<IVote, VoteService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

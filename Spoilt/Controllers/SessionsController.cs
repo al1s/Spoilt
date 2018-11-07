@@ -5,34 +5,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Spoilt.Data;
+using Spoilt.Models.Services;
 
 namespace Spoilt.Controllers
 {
     public class SessionsController : Controller
     {
-        private SpoiltDbContext _context;
+        private SpoiltDbContext _session;
 
         public SessionsController(SpoiltDbContext context)
         {
-            _context = context;
-        }
-
-        // GET: Sessions
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Sessions/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
+            _session = context;
         }
 
         // GET: Sessions/Create
-        public ActionResult Create()
+        public async Task Create()
         {
-            return View();
+            _session();
         }
 
         // POST: Sessions/Create
