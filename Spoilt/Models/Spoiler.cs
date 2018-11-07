@@ -10,7 +10,7 @@ namespace Spoilt.Models
         // Model props:
         public int ID { get; set; }
         public string MovieID { get; set; }
-        public string Text { get; set; }
+        public string SpoilerText { get; set; }
         public DateTime DateTime { get; set; } = DateTime.Now;
 
         // Navigation props:
