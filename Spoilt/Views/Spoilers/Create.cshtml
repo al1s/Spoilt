@@ -10,10 +10,7 @@
     </script>
 }
 
-<h1>Create New Spoiler for @ViewBag.Movie.Title</h1>
-
-<p>@ViewBag.Movie.Plot</p>
-<img src="@ViewBag.Movie.Poster" />
+@await Html.PartialAsync("../Shared/_MovieDetails", (Movie)ViewBag.Movie)
 
 <form asp-action="Create">
     <label asp-for="SpoilerText">Write your spoiler here: </label>
