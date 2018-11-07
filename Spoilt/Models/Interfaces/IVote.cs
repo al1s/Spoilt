@@ -2,7 +2,7 @@
 
 namespace Spoilt.Models.Interfaces
 {
-    public interface IVote : IServiceProvider
+    public interface IVote
     {
         Task<Vote> AddVote(Vote vote);
         Task DeleteVote(int id);

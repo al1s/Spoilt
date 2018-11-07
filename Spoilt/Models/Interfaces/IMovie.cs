@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace Spoilt.Models.Interfaces
 {
-    public interface IMovie : IServiceProvider
+    public interface IMovie
     {
         // Get All
         Task<IEnumerable<Movie>> GetMovies();

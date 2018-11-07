@@ -4,8 +4,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Spoilt.Models;
 using Spoilt.Models.Interfaces;
 using Spoilt.Models.Services;
+using System;
+using System.Collections.Generic;
+using Spoilt.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Spoilt
 {
@@ -23,12 +28,15 @@ namespace Spoilt
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SpoiltDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]);
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddTransient<IMovie, MovieService>();
             services.AddTransient<IUserSession, UserSessionService>();
             services.AddTransient<IVote, VoteService>();
-
-            services.AddTransient<Func<string, IS>>
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
