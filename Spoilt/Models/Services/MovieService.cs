@@ -61,6 +61,7 @@ namespace Spoilt.Models.Services
                 {
                     result = await response.Content.ReadAsAsync<Movie>();
                 }
+
                 return result;
             }
         }

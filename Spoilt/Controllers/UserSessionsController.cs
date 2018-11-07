@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 
 namespace Spoilt.Controllers
 {
-    public class SessionsController : Controller
+    public class UserSessionsController : Controller
     {
         private Models.Interfaces.IUserSession _session;
 
-        public SessionsController(Models.Interfaces.IUserSession context)
+        public UserSessionsController(Models.Interfaces.IUserSession context)
         {
             _session = context;
         }
