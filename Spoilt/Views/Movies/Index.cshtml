@@ -15,12 +15,10 @@
 <div class="container">
     <div class="section">
         <div class="row">
-            <div class="col s12 m6">
-                @foreach (var item in Model)
-                {
-                    await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
-                }
-            </div>
+            @foreach (var item in Model)
+            {
+                await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
+            }
         </div>
     </div>
 </div>
