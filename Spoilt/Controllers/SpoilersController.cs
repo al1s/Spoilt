@@ -64,7 +64,7 @@ namespace Spoilt.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Edit(int id, string updatedText)
+        public async Task<IActionResult> Edit(int id, [Bind("updatedText")] string updatedText)
         {
             var spoiler = await _spoiler.GetSpoiler(id);
             if (spoiler == null)
