@@ -11,21 +11,3 @@
     }
 
     <a asp-controller="Spoilers" asp-action="Create" asp-route-id="@Model.ID"  class="btn">Add spoiler!</a>
-@*@model Spoilt.Models.Movie;
-@{
-    ViewData["Title"] = "Movie Details";
-    Layout = "_Layout";
-}
-<h1>@Model.Title</h1>
-<h5>@Model.Genre</h5>
-
-<img src="@Model.PosterUrl" alt="Movie Poster for @Model.Title" />
-
-<p>@Model.Plot</p>
-
-@foreach (Spoiler spoiler in Model.Spoilers)
-{
-    @await Html.PartialAsync("../Shared/_Spoiler", spoiler)
-}
-
-@Model.Spoilers.Count()*@
