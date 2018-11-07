@@ -13,7 +13,7 @@ namespace Spoilt.Models
         public string Title { get; set; }
         public string Plot { get; set; }
         public string Genre { get; set; }
-        public string PosterUrl { get; set; }
+        public string Poster { get; set; }
 
         // Navigation properties
         public ICollection<Spoiler> Spoilers { get; set; }
