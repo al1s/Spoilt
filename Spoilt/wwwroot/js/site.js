@@ -12,7 +12,7 @@ function addVoteForUser(e) {
         method: 'POST',
         data: {
             MovieId,
-            SpoilerId:,
+            SpoilerId,
             SessionId: getUserConnectionId()
         }
     })
