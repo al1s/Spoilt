@@ -8,18 +8,18 @@ using Spoilt.Data;
 
 namespace Spoilt.Models.Services
 {
-    public class SessionService : ISession
+    public class UserSessionService : IUserSession
     {
         private SpoiltDbContext _context;
 
-        public SessionService(SpoiltDbContext context)
+        public UserSessionService(SpoiltDbContext context)
         {
             _context = context;
         }
 
-        public async Task<Session> CreateSessionString()
+        public async Task<UserSession> CreateSessionString()
         {
-            Session session = new Session();
+            UserSession session = new UserSession();
             _context.Sessions.Add(session);
             await _context.SaveChangesAsync();
 

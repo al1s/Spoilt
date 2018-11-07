@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace Spoilt.Models.Interfaces
 {
-    public interface ISession
+    public interface IUserSession
     {
-        Task<Session> CreateSessionString();
+        Task<UserSession> CreateSessionString();
     }
 }

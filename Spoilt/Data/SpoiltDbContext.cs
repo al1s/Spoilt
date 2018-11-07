@@ -17,6 +17,6 @@ namespace Spoilt.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Spoiler> Spoilers { get; set; }
         public DbSet<Vote> Votes { get; set; }
-        public DbSet<Session> Sessions { get; set; }
+        public DbSet<UserSession> Sessions { get; set; }
     }
 }
