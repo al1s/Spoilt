@@ -3,7 +3,10 @@
 
 // Write your JavaScript code.
 
-$(document).ready(function () {
-    $('.sidenav').sidenav();
+'use strict';
+
+document.addEventListener('DOMContentLoaded', function () {
+    var elems = document.querySelectorAll('.sidenav');
+    var instances = M.Sidenav.init(elems, options);
 });
 
