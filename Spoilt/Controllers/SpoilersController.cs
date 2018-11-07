@@ -5,7 +5,7 @@ namespace Spoilt.Controllers
 {
     public class SpoilersController : Controller
     {
-        public async Task<Vote> Create()
+        public IActionResult Create()
         {
             return View();
         }

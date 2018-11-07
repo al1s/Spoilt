@@ -1,4 +1,6 @@
-﻿namespace Spoilt.Models
+﻿using System;
+
+namespace Spoilt.Models
 {
     public class Vote
     {
