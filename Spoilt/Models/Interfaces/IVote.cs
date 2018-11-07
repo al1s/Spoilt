@@ -5,9 +5,10 @@ using System.Threading.Tasks;
 
 namespace Spoilt.Models.Interfaces
 {
-    interface IVote
+    public interface IVote
     {
-        Task<Vote> AddVote(string movieID, int spoilerID);
+        Task<Vote> AddVote(Vote vote);
         Task DeleteVote(int id);
+        int GetVotesBySpoilerID(int id);
     }
 }

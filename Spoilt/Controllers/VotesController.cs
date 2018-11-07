@@ -6,14 +6,15 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Spoilt.Data;
 using Spoilt.Models;
+using Spoilt.Models.Interfaces;
 
 namespace Spoilt.Controllers
 {
     public class VotesController : Controller
     {
-        private SpoiltDbContext _votes;
+        private IVote _votes;
 
-        public VotesController(SpoiltDbContext context)
+        public VotesController(IVote context)
         {
             _votes = context;
         }
@@ -21,27 +22,17 @@ namespace Spoilt.Controllers
         // POST: Votes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task Create([Bind("ID,MovieID,SpoilerID,SessionID")] Vote vote)
+        public Task Create([Bind("ID,MovieID,SpoilerID,SessionID")] Vote vote)
         {
-            _votes.Votes.Add(vote);
-            await _votes.SaveChangesAsync();
+            return _votes.AddVote(vote);
         }
 
         // POST: Votes/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task DeleteConfirmed(int id)
+        public Task DeleteConfirmed(int id)
         {
-            try
-            {
-                var vote = _votes.Votes.FirstOrDefault(v => v.ID == id);
-                _votes.Remove(vote);
-                await _votes.SaveChangesAsync();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return _votes.DeleteVote(id);
         }
     }
 }

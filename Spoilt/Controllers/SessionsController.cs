@@ -11,34 +11,19 @@ namespace Spoilt.Controllers
 {
     public class SessionsController : Controller
     {
-        private SpoiltDbContext _session;
+        private ISession _session;
 
-        public SessionsController(SpoiltDbContext context)
+        public SessionsController(ISession context)
         {
             _session = context;
-        }
-
-        // GET: Sessions/Create
-        public async Task Create()
-        {
-            _session();
         }
 
         // POST: Sessions/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task Create()
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _session.Create()
         }
 
         // GET: Sessions/Delete/5
@@ -52,16 +37,6 @@ namespace Spoilt.Controllers
         [ValidateAntiForgeryToken]
         public bool Delete(int id)
         {
-            try
-            {
-
-
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
         }
     }
 }

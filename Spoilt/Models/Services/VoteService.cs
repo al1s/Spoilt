@@ -17,9 +17,8 @@ namespace Spoilt.Models.Services
             _context = context;
         }
 
-        public async Task<Vote> AddVote(string movieID, int spoilerID)
+        public async Task<Vote> AddVote(Vote vote)
         {
-            Vote vote = new Vote() { MovieID = movieID, SpoilerID = spoilerID };
             _context.Votes.Add(vote);
             await _context.SaveChangesAsync();
             return vote;
@@ -30,6 +29,12 @@ namespace Spoilt.Models.Services
             Vote vote = _context.Votes.FirstOrDefault(v => v.ID == id);
             _context.Votes.Remove(vote);
             await _context.SaveChangesAsync();
+        }
+
+        public int GetVotesBySpoilerID(int id)
+        {
+            int allVotesForSpoiler = _context.Votes.Where(v => v.SpoilerID == id).Count();
+            return allVotesForSpoiler;
         }
     }
 }
