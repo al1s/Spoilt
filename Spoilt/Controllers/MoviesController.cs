@@ -16,7 +16,6 @@ namespace Spoilt.Controllers
         {
             _movies = movies;
             _votes = votes;
-
         }
 
         public async Task<IActionResult> Index(string title)
