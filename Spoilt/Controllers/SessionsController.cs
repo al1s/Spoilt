@@ -5,9 +5,9 @@ namespace Spoilt.Controllers
 {
     public class SessionsController : Controller
     {
-        private Models.Interfaces.ISession _session;
+        private Models.Interfaces.IUserSession _session;
 
-        public SessionsController(Models.Interfaces.ISession context)
+        public SessionsController(Models.Interfaces.IUserSession context)
         {
             _session = context;
         }
