@@ -1,2 +1,12 @@
 ﻿@import "materialize";
 @import "typography";
+
+.card-image img {
+    width: 250px;
+    height: 350px;
+}
+
+.card .card-title {
+    color: black;
+    font-size: 1vw;
+}
