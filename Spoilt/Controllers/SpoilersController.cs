@@ -63,7 +63,7 @@ namespace Spoilt.Controllers
             return View(spoiler);
         }
 
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> Edit(int id, [Bind("updatedText")] string updatedText)
         {
             var spoiler = await _spoiler.GetSpoiler(id);
