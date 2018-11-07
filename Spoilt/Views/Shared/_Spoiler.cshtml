@@ -2,5 +2,6 @@
 
 <div>
     <p class="data-text">@Model.SpoilerText</p>
-    <p class="data-text">@Model.CreatedAt</p>
+    <p class="data-text">@Model.Created.ToLocalTime()</p>
+    <a asp-action="Edit" asp-controller="Spoilers" asp-route-id="@Model.ID">Edit This Spoiler</a>
 </div>
