@@ -59,9 +59,14 @@ namespace Spoilt.Models.Services
                 Movie result = new Movie();
                 if (response.IsSuccessStatusCode)
                 {
+                    // Total votes for spoilers belonging to this movie
+                    // Grab from the Votes table
+                    // Calculate total and set the Votes prop on Spoiler prop of Movie object
+
                     result = await response.Content.ReadAsAsync<Movie>();
                     Console.WriteLine("Hi");
                 }
+
                 return result;
             }
         }

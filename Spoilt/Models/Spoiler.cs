@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Spoilt.Models
 {
@@ -12,5 +13,6 @@ namespace Spoilt.Models
 
         // Navigation props:
         public Movie Movie { get; set; }
+        public int Votes { get; set; }
     }
 }

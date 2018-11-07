@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Spoilt.Models;
 using Spoilt.Models.Interfaces;
 using System.Threading.Tasks;
 
@@ -6,30 +7,40 @@ namespace Spoilt.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly IMovie _movie;
+        private readonly IMovie _movies;
+        private readonly IVote _votes;
 
-        public MoviesController(IMovie movieInterface)
+        public MoviesController(IMovie movieService, IVote voteService)
         {
-            _movie = movieInterface;
+            _movies = movieService;
+            _votes = voteService;
         }
 
         public async Task<IActionResult> Index(string title)
         {
             if (title != null)
             {
-                var myMovies = await _movie.GetMoviesByTitle(title);
+                var myMovies = await _movies.GetMoviesByTitle(title);
                 return View(myMovies);
             }
             else
             {
-                var myMovies = await _movie.GetMovies();
+                var myMovies = await _movies.GetMovies();
                 return View(myMovies);
             }
         }
 
         public async Task<IActionResult> Details(string id)
         {
-            var movie = await _movie.GetMovieById(id);
+            var movie = await _movies.GetMovieById(id);
+
+            // Set the Votes property per each spoiler object using a method provided by the VoteService
+            foreach (Spoiler spoiler in movie.Spoilers)
+            {
+                int numberOfVotesPerSpoiler = _votes.GetVotesBySpoilerID(spoiler.ID);
+                spoiler.Votes = numberOfVotesPerSpoiler;
+            }
+
             return View(movie);
         }
 
