@@ -23,6 +23,11 @@ function createUserConnectionId() {
 
 $(document).ready(function () {
     $('.sidenav').sidenav();
+    var b = $("nav .categories-container");
+    if (b.length) {
+        b.pushpin({ top: b.offset().top });
+    }
+
     $('#UserSessionID').val(getUserConnectionId());
 });
 
