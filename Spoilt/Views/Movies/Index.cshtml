@@ -1,13 +1,19 @@
-﻿@model IEnumerable<Spoilt.Models.Movie>
+@model IEnumerable<Spoilt.Models.Movie>
 @{
     ViewData["Title"] = "Home";
     Layout = "_Layout";
 }
 
-<h1>SPOILT!</h1>
-<h2>The site that lets you view and contribute movie spoilers</h2>
-
-<p>Consider this your Spoiler Warning</p>
+<div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+        <br><br>
+            <h1 class="header center orange-text">SPOILT</h1>
+            <div class="row center">
+                <h5 class="header col s12 light">The site that lets you view and contribute movie spoilers</h5>
+                <p>Consider this your Spoiler Warning</p>
+            </div>
+    </div>
+</div>
 
 @if (ViewBag.Error != null)
 {
@@ -27,4 +33,3 @@
         }
     </div>
 }
-

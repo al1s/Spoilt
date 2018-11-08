@@ -7,24 +7,6 @@
 MovieId = $('#movieId').text();
 SpoilerId = $('#SpoilerId');
 
-//function deleteVoteForUser(e) {
-//    e.preventDefault();
-//    $.ajax({
-//        url: '/Votes/DeleteConfirmed',
-//        method: 'POST',
-//        data: {
-//            MovieId,
-//            SpoilerId,
-//            SessionId: getUserConnectionId()
-//        }
-//    })
-//        .then((resp, status, xhr) => {
-//            if (status === "500") {
-//                errMsg = xhr.responseJSON();
-//            }
-//        })
-//}
-
 // Check local strorage for userId and create if needed
 var UserConnectionId = undefined;
 function getUserConnectionId() {
@@ -48,6 +30,25 @@ function createUserConnectionId() {
     return str;
 };
 
+$(document).ready(function () {
+    $('.sidenav').sidenav();
+    $('#UserSessionID').val(getUserConnectionId());
+});
+
+// TODO: Even though a double vote won't get saved to the Votes table, the front end will still increment the count. How can we prevent this?
+// Vote limiting variable
+var userGetsOneVote = 0;
+
+// Event listener and handler for voting functionality
+$('.upvote').on('click', function (e) {
+    e.preventDefault();
+    var movieID = $(this).data("movieid");
+    var spoilerID = $(this).data("spoilerid");
+
+    // Post to Votes table
+    addVoteForUser(e, movieID, spoilerID);
+});
+
 // Make AJAX call to POST Vote
 function addVoteForUser(e, movieID, spoilerID) {
     e.preventDefault();
@@ -60,39 +61,19 @@ function addVoteForUser(e, movieID, spoilerID) {
             SpoilerID: spoilerID,
             SessionID: userSessionID
         }
-    }).then(function (resp, status, xhr) {
-        if (status === "500") {
+    }).done(function (resp, status, xhr) {
+        if (status === "200") {
             errMsg = xhr.responseJSON();
+        } else if (statuc === "200") {
+            var votes = parseInt($('.display-votes-spoiler-' + spoilerID).text());
+
+            if (userGetsOneVote < 1) {
+                ++votes;
+                ++userGetsOneVote;
+            }
+
+            $('.display-votes-spoiler-' + spoilerID).text(votes);
         }
     });
 }
-
-$(document).ready(function () {
-    $('.sidenav').sidenav();
-    $('#UserSessionID').val(getUserConnectionId());
-});
-
-// TODO: Even though a double vote won't get saved to the Votes table, the front end will still increment the count. How can we prevent this?
-// Vote limiting variable
-var userGetsOneVote = 0;
-
-// Use jquery to render changes in vote on card
-// When page is reloaded, grab votes from table
-$('.upvote').on('click', function (e) {
-    e.preventDefault();
-    var movieID = $(this).data("movieid");
-    var spoilerID = $(this).data("spoilerid");
-
-    // Post to Votes table
-    addVoteForUser(e, movieID, spoilerID);
-
-    // Use jquery to display changes in vote dynamically
-    var votes = parseInt($('.display-votes-spoiler-' + spoilerID).text());
-    if (userGetsOneVote < 1) {
-        ++votes;
-        ++userGetsOneVote;
-    }
-
-    $('.display-votes-spoiler-' + spoilerID).text(votes);
-});
 
