@@ -56,14 +56,12 @@ function addVoteForUser(e, movieID, spoilerID) {
             UserSessionID: userSessionID
         }
     })
-        .done((resp, status, xhr) => {
+        .then((resp, status, xhr) => {
             voteStatus = JSON.parse(xhr.responseText);
-            if (voteStatus.voted) {
+            if (!voteStatus.voted) {
                 let votes = parseInt($(`.display-votes-spoiler-${spoilerID}`).text());
 
                 ++votes;
-                ++userGetsOneVote;
-
                 $(`.display-votes-spoiler-${spoilerID}`).text(votes);
             }
         });
