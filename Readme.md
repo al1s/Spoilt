@@ -9,7 +9,7 @@ The project is a live extensible collection of spoilers for movies and it should
 
 ## API Documentation
 
-[via Postman]()
+[via Swagger](http://spoiltapi.azurewebsites.net)
 
 ## Getting started
 
