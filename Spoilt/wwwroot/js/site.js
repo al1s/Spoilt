@@ -71,7 +71,7 @@ $(document).ready(function () {
     $('#UserSessionID').val(getUserConnectionId());
 });
 
-
+// TODO: Even though a double vote won't get saved to the Votes table, the front end will still increment the count. How can we prevent this?
 // Vote limiting variable
 let userGetsOneVote = 0;
 
