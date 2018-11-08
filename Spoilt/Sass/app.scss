@@ -31,6 +31,12 @@ html, body {
     overflow: hidden;
 }
 
+.about-us img {
+    height: 50%;
+    width: 50%;
+    margin-left: 27%;
+}
+
 nav {
     position: relative;
     top: 0;
@@ -81,7 +87,6 @@ nav .categories-wrapper {
     max-height: 64px;
 }
 
-
 .categories-container.pinned .brand-logo {
     display: block !important;
 }
@@ -112,8 +117,6 @@ nav .nav-header h1 {
     font-weight: 600;
 }
 
-
-
 nav .categories-wrapper .categories-container.pinned {
     width: 100%;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
@@ -122,8 +125,6 @@ nav .categories-wrapper .categories-container.pinned {
 .pin-top {
     position: relative;
 }
-
-
 
 .t-padding {
     margin-top: 100px;
@@ -149,7 +150,6 @@ nav .categories-wrapper .categories-container.pinned {
     text-align: center;
 }
 
-
 nav.nav-extended .nav-wrapper {
     min-height: 56px;
     height: auto;
@@ -160,15 +160,29 @@ nav .nav-wrapper {
     height: 100%;
 }
 
+.collection {
+    margin: .5rem 0 1rem 0;
+    overflow: hidden;
+    position: relative;
+    border: none;
+}
 
+.collection .collection-item {
+    background-color: #fff;
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.upvote {
+    width: 100%;
+}
 @media only screen and (min-width: 993px) {
     .db {
         width: 70%;
     }
 }
-
-
-
 
 @media only screen and (min-width: 601px) {
     nav.nav-extended .nav-wrapper {
