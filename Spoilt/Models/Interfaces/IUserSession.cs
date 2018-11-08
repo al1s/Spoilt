@@ -4,6 +4,6 @@ namespace Spoilt.Models.Interfaces
 {
     public interface IUserSession
     {
-        Task<UserSession> CreateSessionString();
+        Task<UserSession> CreateSessionString(string localStorageString);
     }
 }

@@ -1,27 +1,27 @@
 ﻿// Add Save/Update buttons click handlers
 // Add UserSession id handling
 // $('#spoilerUpVoteButton').on('click', addVoteForUser);
-$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
+//$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
 MovieId = $('#movieId').text();
 SpoilerId = $('#SpoilerId');
 
-function deleteVoteForUser(e) {
-    e.preventDefault();
-    $.ajax({
-        url: '/Votes/DeleteConfirmed',
-        method: 'POST',
-        data: {
-            MovieId,
-            SpoilerId,
-            SessionId: getUserConnectionId()
-        }
-    })
-        .then((resp, status, xhr) => {
-            if (status === "500") {
-                errMsg = xhr.responseJSON();
-            }
-        })
-}
+//function deleteVoteForUser(e) {
+//    e.preventDefault();
+//    $.ajax({
+//        url: '/Votes/DeleteConfirmed',
+//        method: 'POST',
+//        data: {
+//            MovieId,
+//            SpoilerId,
+//            SessionId: getUserConnectionId()
+//        }
+//    })
+//        .then((resp, status, xhr) => {
+//            if (status === "500") {
+//                errMsg = xhr.responseJSON();
+//            }
+//        })
+//}
 
 // Check local strorage for userId and create if needed
 let UserConnectionId;
@@ -56,7 +56,7 @@ function addVoteForUser(e, movieID, spoilerID) {
         data: {
             MovieID: movieID,
             SpoilerID: spoilerID,
-            UserSessionID: userSessionID
+            SessionID: userSessionID
         }
     })
         .then((resp, status, xhr) => {
@@ -71,9 +71,26 @@ $(document).ready(function () {
     $('#UserSessionID').val(getUserConnectionId());
 });
 
+// TODO: Even though a double vote won't get saved to the Votes table, the front end will still increment the count. How can we prevent this?
+// Vote limiting variable
+let userGetsOneVote = 0;
+
+// Use jquery to render changes in vote on card
+// When page is reloaded, grab votes from table
 $('.upvote').on('click', function (e) {
     e.preventDefault();
     const movieID = $(this).data("movieid");
     const spoilerID = $(this).data("spoilerid");
+
+    // Post to Votes table
     addVoteForUser(e, movieID, spoilerID);
+
+    // Use jquery to display changes in vote dynamically
+    let votes = parseInt($(`.display-votes-spoiler-${spoilerID}`).text());
+    if (userGetsOneVote < 1) {
+        ++votes;
+        ++userGetsOneVote;
+    }
+
+    $(`.display-votes-spoiler-${spoilerID}`).text(votes);
 });

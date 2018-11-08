@@ -8,17 +8,23 @@ namespace Spoilt.Controllers
     public class VotesController : Controller
     {
         private IVote _votes;
+        private IUserSession _sessions;
 
-        public VotesController(IVote context)
+        public VotesController(IVote votes, IUserSession sessions)
         {
-            _votes = context;
+            _votes = votes;
+            _sessions = sessions;
         }
 
         // POST: Votes/Create
         [HttpPost]
-        public Task Create([Bind("ID,MovieID,SpoilerID,UserSessionID")] Vote vote)
+        public async Task Create([Bind("ID,MovieID,SpoilerID,UserSessionID")] Vote vote)
         {
-            return _votes.AddVote(vote);
+            // Creates the Session instance as a part of the UserSession service
+            await _sessions.CreateSessionString(vote.UserSessionID);
+
+            var checkIfVoteAlreadyExists = _votes.CheckIfUserAlreadyVotedForSpoiler(vote.SpoilerID, vote.UserSessionID);
+            if (checkIfVoteAlreadyExists == 0) await _votes.AddVote(vote);
         }
 
         // POST: Votes/Delete/5

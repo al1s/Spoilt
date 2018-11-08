@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using Spoilt.Models;
 
 namespace Spoilt.Controllers
 {
@@ -15,9 +16,11 @@ namespace Spoilt.Controllers
         // POST: Sessions/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task Create()
+        public async Task Create([Bind("ID,CreatedAt")] UserSession session)
         {
-            await _session.CreateSessionString();
+            // I feel like this is weird, and I don't like it. Do we even need a Create action?
+            // We never redirect to this action; instead, we call the .CreateSessionString() method from the UserSession service within the VotesController/Create action. Effectively, sessions are not stored in the Sessions table until a user votes.
+            await _session.CreateSessionString(session.ID);
         }
     }
 }

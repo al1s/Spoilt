@@ -1,28 +1,29 @@
 ﻿// Add Save/Update buttons click handlers
 // Add UserSession id handling
 // $('#spoilerUpVoteButton').on('click', addVoteForUser);
+//$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
 'use strict';
 
-$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
 MovieId = $('#movieId').text();
 SpoilerId = $('#SpoilerId');
 
-function deleteVoteForUser(e) {
-    e.preventDefault();
-    $.ajax({
-        url: '/Votes/DeleteConfirmed',
-        method: 'POST',
-        data: {
-            MovieId: MovieId,
-            SpoilerId: SpoilerId,
-            SessionId: getUserConnectionId()
-        }
-    }).then(function (resp, status, xhr) {
-        if (status === "500") {
-            errMsg = xhr.responseJSON();
-        }
-    });
-}
+//function deleteVoteForUser(e) {
+//    e.preventDefault();
+//    $.ajax({
+//        url: '/Votes/DeleteConfirmed',
+//        method: 'POST',
+//        data: {
+//            MovieId,
+//            SpoilerId,
+//            SessionId: getUserConnectionId()
+//        }
+//    })
+//        .then((resp, status, xhr) => {
+//            if (status === "500") {
+//                errMsg = xhr.responseJSON();
+//            }
+//        })
+//}
 
 // Check local strorage for userId and create if needed
 var UserConnectionId = undefined;
@@ -57,7 +58,7 @@ function addVoteForUser(e, movieID, spoilerID) {
         data: {
             MovieID: movieID,
             SpoilerID: spoilerID,
-            UserSessionID: userSessionID
+            SessionID: userSessionID
         }
     }).then(function (resp, status, xhr) {
         if (status === "500") {
@@ -71,10 +72,26 @@ $(document).ready(function () {
     $('#UserSessionID').val(getUserConnectionId());
 });
 
+// Vote limiting variable
+var userGetsOneVote = 0;
+
+// Use jquery to render changes in vote on card
+// When page is reloaded, grab votes from table
 $('.upvote').on('click', function (e) {
     e.preventDefault();
     var movieID = $(this).data("movieid");
     var spoilerID = $(this).data("spoilerid");
+
+    // Post to Votes table
     addVoteForUser(e, movieID, spoilerID);
+
+    // Use jquery to display changes in vote dynamically
+    var votes = parseInt($('.display-votes-spoiler-' + spoilerID).text());
+    if (userGetsOneVote < 1) {
+        ++votes;
+        ++userGetsOneVote;
+    }
+
+    $('.display-votes-spoiler-' + spoilerID).text(votes);
 });
 

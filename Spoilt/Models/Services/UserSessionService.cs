@@ -13,9 +13,12 @@ namespace Spoilt.Models.Services
             _context = context;
         }
 
-        public async Task<UserSession> CreateSessionString()
+        public async Task<UserSession> CreateSessionString(string localStorageString)
         {
-            UserSession session = new UserSession();
+            UserSession session = new UserSession
+            {
+                ID = localStorageString
+            };
             _context.Sessions.Add(session);
             await _context.SaveChangesAsync();
 

@@ -7,5 +7,6 @@ namespace Spoilt.Models.Interfaces
         Task<Vote> AddVote(Vote vote);
         Task DeleteVote(int id);
         int GetVotesBySpoilerID(int id);
+        int CheckIfUserAlreadyVotedForSpoiler(int spoilerID, string userSession);
     }
 }

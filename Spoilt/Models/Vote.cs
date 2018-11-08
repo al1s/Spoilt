@@ -12,6 +12,6 @@ namespace Spoilt.Models
         public DateTime CreatedAt { get; set; }
 
         // Navigation props
-        public UserSession UserSession { get; set; }
+        public UserSession Session { get; set; }
     }
 }
