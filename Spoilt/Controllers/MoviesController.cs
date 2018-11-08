@@ -18,18 +18,16 @@ namespace Spoilt.Controllers
             _votes = votes;
         }
 
-        public async Task<IActionResult> Index(string title)
+        public async Task<IActionResult> Index()
         {
-            if (title != null)
-            {
-                var myMovies = await _movies.GetMoviesByTitle(title);
-                return View(myMovies);
-            }
-            else
-            {
-                var myMovies = await _movies.GetMovies();
-                return View(myMovies);
-            }
+            var myMovies = await _movies.GetMovies();
+            return View(myMovies);
+        }
+
+        public async Task<IActionResult> Search(string title)
+        {
+            var myMovies = await _movies.GetMoviesByTitle(title);
+            return View("Index", myMovies);
         }
 
         [HttpGet]
