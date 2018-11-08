@@ -12,12 +12,22 @@ namespace Spoilt.Controllers
         private readonly IMovie _movies;
         private readonly IVote _votes;
 
+        /// <summary>
+        /// Passes the methods from the movie and votes interfaces/services to communicate with the custom api and the app's database
+        /// </summary>
+        /// <param name="movies">The interface the controller will use to get movie data from the custom api</param>
+        /// <param name="votes">The interface the controller will use to get vote data from the database</param>
         public MoviesController(IMovie movies, IVote votes)
         {
             _movies = movies;
             _votes = votes;
         }
 
+        /// <summary>
+        /// Gets all movies from the custom API, or all movies with titles containing a string if one is provided
+        /// </summary>
+        /// <param name="title">A string the user inputs into a search bar</param>
+        /// <returns>View at Movies/Index with movie data provided by custom API</returns>
         public async Task<IActionResult> Index(string title)
         {
             if (title != null)
@@ -32,6 +42,11 @@ namespace Spoilt.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets one movie along with all of its associated spoilers from the custom API, and the votes associated with each spoiler from frontend database
+        /// </summary>
+        /// <param name="id">A string indicating the IMDB id to retrieve movie data from custom API</param>
+        /// <returns>A view at Movies/Details with movie, spoiler, and vote data</returns>
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
