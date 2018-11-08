@@ -9,14 +9,22 @@
 
 <p>Consider this your Spoiler Warning</p>
 
+@if (ViewBag.Error != null)
+{
+    <div class="card-panel red"><p class="black-text">@ViewBag.Error</p></div>
+}
+
 @{
     await Html.RenderPartialAsync("/Views/Shared/_SearchBar.cshtml");
 }
 
+@if (Model != null)
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
+        }
+    </div>
+}
 
-<div class="row">
-    @foreach (var item in Model)
-    {
-        await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
-    }
-</div>
