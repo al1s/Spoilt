@@ -75,8 +75,7 @@ $(document).ready(function () {
 // Vote limiting variable
 let userGetsOneVote = 0;
 
-// Use jquery to render changes in vote on card
-// When page is reloaded, grab votes from table
+// Event listener and handler for voting functionality
 $('.upvote').on('click', function (e) {
     e.preventDefault();
     const movieID = $(this).data("movieid");
