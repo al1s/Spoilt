@@ -4,14 +4,6 @@
     Layout = "_Layout";
 }
 
-@section Scripts {
-    <script>
-        $(function generateSessionId() {
-            return console.log("hi");
-        });
-    </script>
-}
-
 <h1>SPOILT!</h1>
 <h2>The site that lets you view and contribute movie spoilers</h2>
 
@@ -22,13 +14,9 @@
 }
 
 
-<div class="container">
-    <div class="section">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
-            }
-        </div>
-    </div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
+    }
 </div>

@@ -2,11 +2,30 @@
 @import "typography";
 
 .card-image img {
-    width: 250px;
-    height: 350px;
+    max-height: 300px;
+    object-fit: cover;
 }
 
 .card .card-title {
     color: black;
-    font-size: 1vw;
+    font-size: 1.2vw;
+    font-weight: bold;
 }
+
+.card {
+
+}
+.card .card-content {
+    height: 240px;
+}
+
+.card .card-content .card-plot {
+    height: 60%;
+    width: 100%;
+    white-space: pre-line;
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+}
+
+
