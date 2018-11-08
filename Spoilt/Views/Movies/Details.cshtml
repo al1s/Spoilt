@@ -14,8 +14,10 @@
 
 <a asp-controller="Spoilers" asp-action="Create" asp-route-id="@Model.ID" class="btn">Add spoiler!</a>
 
-@foreach (Spoiler spoiler in Model.Spoilers)
-{
-    @await Html.PartialAsync("../Shared/_Spoiler", spoiler)
-}
+<ul class="collection">
+    @foreach (Spoiler spoiler in Model.Spoilers)
+    {
+        @await Html.PartialAsync("../Shared/_Spoiler", spoiler)
+    }
 
+</ul>
