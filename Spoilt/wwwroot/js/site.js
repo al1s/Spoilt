@@ -1,7 +1,4 @@
-﻿MovieId = $('#movieId').text();
-SpoilerId = $('#SpoilerId');
-
-// Check local strorage for userId and create if needed
+﻿// Check local strorage for userId and create if needed
 let UserConnectionId;
 function getUserConnectionId() {
     if (!localStorage.getItem('UserConnectionId')) {
@@ -14,7 +11,7 @@ function getUserConnectionId() {
     return UserConnectionId;
 };
 
-// function to create a new user id
+// Function to create a new user id
 function createUserConnectionId() {
     let str = '';
     const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
