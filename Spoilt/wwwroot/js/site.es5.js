@@ -35,9 +35,6 @@ $(document).ready(function () {
     $('.tabs').tabs();
 });
 
-// Vote limiting variable
-var userGetsOneVote = 0;
-
 // Event listener and handler for voting functionality
 $('.upvote').on('click', function (e) {
     e.preventDefault();
@@ -58,17 +55,15 @@ function addVoteForUser(e, movieID, spoilerID) {
         data: {
             MovieID: movieID,
             SpoilerID: spoilerID,
-            SessionID: userSessionID
+            UserSessionID: userSessionID
         }
     }).done(function (resp, status, xhr) {
         voteStatus = JSON.parse(xhr.responseText);
         if (voteStatus.voted) {
             var votes = parseInt($('.display-votes-spoiler-' + spoilerID).text());
 
-            if (userGetsOneVote < 1) {
-                ++votes;
-                ++userGetsOneVote;
-            }
+            ++votes;
+            ++userGetsOneVote;
 
             $('.display-votes-spoiler-' + spoilerID).text(votes);
         }
