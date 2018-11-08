@@ -1,27 +1,30 @@
 ﻿// Add Save/Update buttons click handlers
 // Add UserSession id handling
 // $('#spoilerUpVoteButton').on('click', addVoteForUser);
-$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
+//$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
 MovieId = $('#movieId').text();
 SpoilerId = $('#SpoilerId');
 
-function deleteVoteForUser(e) {
-    e.preventDefault();
-    $.ajax({
-        url: '/Votes/DeleteConfirmed',
-        method: 'POST',
-        data: {
-            MovieId,
-            SpoilerId,
-            SessionId: getUserConnectionId()
-        }
-    })
-        .then((resp, status, xhr) => {
-            if (status === "500") {
-                errMsg = xhr.responseJSON();
-            }
-        })
-}
+// Use ajax to render changes in vote on card
+// When page is reloaded, grab votes from table
+
+//function deleteVoteForUser(e) {
+//    e.preventDefault();
+//    $.ajax({
+//        url: '/Votes/DeleteConfirmed',
+//        method: 'POST',
+//        data: {
+//            MovieId,
+//            SpoilerId,
+//            SessionId: getUserConnectionId()
+//        }
+//    })
+//        .then((resp, status, xhr) => {
+//            if (status === "500") {
+//                errMsg = xhr.responseJSON();
+//            }
+//        })
+//}
 
 // Check local strorage for userId and create if needed
 let UserConnectionId;

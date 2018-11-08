@@ -7,22 +7,23 @@ $('#spoilerDownVoteButton').on('click', deleteVoteForUser);
 MovieId = $('#movieId').text();
 SpoilerId = $('#SpoilerId');
 
-function deleteVoteForUser(e) {
-    e.preventDefault();
-    $.ajax({
-        url: '/Votes/DeleteConfirmed',
-        method: 'POST',
-        data: {
-            MovieId: MovieId,
-            SpoilerId: SpoilerId,
-            SessionId: getUserConnectionId()
-        }
-    }).then(function (resp, status, xhr) {
-        if (status === "500") {
-            errMsg = xhr.responseJSON();
-        }
-    });
-}
+//function deleteVoteForUser(e) {
+//    e.preventDefault();
+//    $.ajax({
+//        url: '/Votes/DeleteConfirmed',
+//        method: 'POST',
+//        data: {
+//            MovieId,
+//            SpoilerId,
+//            SessionId: getUserConnectionId()
+//        }
+//    })
+//        .then((resp, status, xhr) => {
+//            if (status === "500") {
+//                errMsg = xhr.responseJSON();
+//            }
+//        })
+//}
 
 // Check local strorage for userId and create if needed
 var UserConnectionId = undefined;
