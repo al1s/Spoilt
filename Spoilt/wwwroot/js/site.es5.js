@@ -31,6 +31,8 @@ $(document).ready(function () {
     }
 
     $('#UserSessionID').val(getUserConnectionId());
+
+    $('.tabs').tabs();
 });
 
 // Vote limiting variable
