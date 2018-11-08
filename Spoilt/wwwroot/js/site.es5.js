@@ -1,12 +1,79 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
-
+﻿// Add Save/Update buttons click handlers
+// Add UserSession id handling
+// $('#spoilerUpVoteButton').on('click', addVoteForUser);
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function () {
-    var elems = document.querySelectorAll('.sidenav');
-    var instances = M.Sidenav.init(elems, options);
+$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
+MovieId = $('#movieId').text();
+SpoilerId = $('#SpoilerId');
+
+function deleteVoteForUser(e) {
+    e.preventDefault();
+    $.ajax({
+        url: '/Votes/DeleteConfirmed',
+        method: 'POST',
+        data: {
+            MovieId: MovieId,
+            SpoilerId: SpoilerId,
+            SessionId: getUserConnectionId()
+        }
+    }).then(function (resp, status, xhr) {
+        if (status === "500") {
+            errMsg = xhr.responseJSON();
+        }
+    });
+}
+
+// Check local strorage for userId and create if needed
+var UserConnectionId = undefined;
+function getUserConnectionId() {
+    if (!localStorage.getItem('UserConnectionId')) {
+        UserConnectionId = !!UserConnectionId ? UserConnectionId : createUserConnectionId();
+        localStorage.setItem('UserConnectionId', UserConnectionId);
+    } else {
+        UserConnectionId = !!UserConnectionId ? UserConnectionId : localStorage.getItem('UserConnectionId');
+    }
+};
+
+// function to create a new user id
+function createUserConnectionId() {
+    var str = '';
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < 10; i++) {
+        str += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return str;
+};
+
+// Make AJAX call to POST Vote
+function addVoteForUser(e, movieID, spoilerID) {
+    e.preventDefault();
+    var token = $('input[name="__RequestVerificationToken"]', form).val();
+    $.ajax({
+        url: '/Votes/Create',
+        method: 'POST',
+        data: {
+            MovieID: movieID,
+            SpoilerID: spoilerID,
+            UserSessionID: getUserConnectionId(),
+            __RequestVerificationToken: token
+        }
+    }).then(function (resp, status, xhr) {
+        if (status === "500") {
+            errMsg = xhr.responseJSON();
+        }
+    });
+}
+
+$(document).ready(function () {
+    $('.sidenav').sidenav();
+    $('#UserSessionID').val(getUserConnectionId());
+});
+
+$('.upvote').on('click', function (e) {
+    e.preventDefault();
+    var movieID = $(this).data("movieid");
+    var spoilerID = $(this).data("spoilerid");
+    addVoteForUser(e, movieID, spoilerID);
 });
 
