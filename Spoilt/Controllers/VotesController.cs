@@ -20,7 +20,8 @@ namespace Spoilt.Controllers
         [HttpPost]
         public Task Create([Bind("ID,MovieID,SpoilerID,UserSessionID")] Vote vote)
         {
-            _sessions.CreateSessionString()
+            // Creates the Session instance
+            _sessions.CreateSessionString(vote.UserSessionID);
             return _votes.AddVote(vote);
         }
 
