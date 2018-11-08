@@ -1,8 +1,4 @@
-﻿// Add Save/Update buttons click handlers
-// Add UserSession id handling
-// $('#spoilerUpVoteButton').on('click', addVoteForUser);
-//$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
-MovieId = $('#movieId').text();
+﻿MovieId = $('#movieId').text();
 SpoilerId = $('#SpoilerId');
 
 // Check local strorage for userId and create if needed
@@ -32,8 +28,6 @@ $(document).ready(function () {
     $('.sidenav').sidenav();
     $('#UserSessionID').val(getUserConnectionId());
 });
-
-// TODO: Even though a double vote won't get saved to the Votes table, the front end will still increment the count. How can we prevent this?
 
 // Vote limiting variable
 let userGetsOneVote = 0;
