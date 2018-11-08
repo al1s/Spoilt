@@ -1,6 +1,13 @@
-﻿// Check local strorage for userId and create if needed
+﻿// Add Save/Update buttons click handlers
+// Add UserSession id handling
+// $('#spoilerUpVoteButton').on('click', addVoteForUser);
+//$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
 'use strict';
 
+MovieId = $('#movieId').text();
+SpoilerId = $('#SpoilerId');
+
+// Check local strorage for userId and create if needed
 var UserConnectionId = undefined;
 function getUserConnectionId() {
     if (!localStorage.getItem('UserConnectionId')) {
@@ -13,7 +20,7 @@ function getUserConnectionId() {
     return UserConnectionId;
 };
 
-// Function to create a new user id
+// function to create a new user id
 function createUserConnectionId() {
     var str = '';
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -25,9 +32,15 @@ function createUserConnectionId() {
 
 $(document).ready(function () {
     $('.sidenav').sidenav();
+    var b = $("nav .categories-container");
+    if (b.length) {
+        b.pushpin({ top: b.offset().top });
+    }
+
     $('#UserSessionID').val(getUserConnectionId());
 });
 
+// TODO: Even though a double vote won't get saved to the Votes table, the front end will still increment the count. How can we prevent this?
 // Vote limiting variable
 var userGetsOneVote = 0;
 
@@ -41,7 +54,7 @@ $('.upvote').on('click', function (e) {
     addVoteForUser(e, movieID, spoilerID);
 });
 
-// Make AJAX call to POST Vote. Change number of votes on DOM only if vote successfully posted.
+// Make AJAX call to POST Vote
 function addVoteForUser(e, movieID, spoilerID) {
     e.preventDefault();
     var userSessionID = getUserConnectionId();
@@ -54,8 +67,9 @@ function addVoteForUser(e, movieID, spoilerID) {
             SessionID: userSessionID
         }
     }).done(function (resp, status, xhr) {
-        voteStatus = JSON.parse(xhr.responseText);
-        if (voteStatus.voted) {
+        if (status === "200") {
+            errMsg = xhr.responseJSON();
+        } else if (statuc === "200") {
             var votes = parseInt($('.display-votes-spoiler-' + spoilerID).text());
 
             if (userGetsOneVote < 1) {

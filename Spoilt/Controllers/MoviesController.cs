@@ -30,9 +30,16 @@ namespace Spoilt.Controllers
         /// <returns>View at Movies/Index with movie data provided by custom API</returns>
         public async Task<IActionResult> Index(string title)
         {
+            ViewBag.Error = null;
             if (title != null)
             {
                 var myMovies = await _movies.GetMoviesByTitle(title);
+                if (myMovies == null)
+                {
+                    myMovies = await _movies.GetMovies();
+                    ViewBag.Error = "Too Many Results! Please refine your search.";
+                    return View(myMovies);
+                }
                 return View(myMovies);
             }
             else
@@ -60,7 +67,6 @@ namespace Spoilt.Controllers
                 int numberOfVotesPerSpoiler = _votes.GetVotesBySpoilerID(spoiler.ID);
                 spoiler.Votes = numberOfVotesPerSpoiler;
             }
-
             return View(movie);
         }
     }
