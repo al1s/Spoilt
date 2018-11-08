@@ -16,8 +16,7 @@ namespace Spoilt.Controllers
 
         // POST: Votes/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public Task Create([Bind("ID,MovieID,SpoilerID,SessionID")] Vote vote)
+        public Task Create([Bind("ID,MovieID,SpoilerID,UserSessionID")] Vote vote)
         {
             return _votes.AddVote(vote);
         }
