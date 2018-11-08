@@ -14,13 +14,9 @@
 }
 
 
-<div class="container">
-    <div class="section">
-        <div class="row">
-            @foreach (var item in Model)
-            {
-                await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
-            }
-        </div>
-    </div>
+<div class="row">
+    @foreach (var item in Model)
+    {
+        await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
+    }
 </div>
