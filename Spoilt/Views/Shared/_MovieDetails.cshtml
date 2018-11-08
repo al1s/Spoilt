@@ -1,12 +1,19 @@
 ﻿@model Spoilt.Models.Movie
 
-<div class="row">
-    <div class="col m4">
-        <img alt="@Model.Title" src="@Model.Poster">
+<div class="card row">
+    <div class="card-content col m4">
+        <img class="responsive-img" alt="@Model.Title" src="@Model.Poster">
     </div>
-    <div class="col m6">
-        <h3>@Model.Title</h3>
-        <p>@Html.DisplayNameFor(model => model.Genre): @Model.Genre</p>
-        <p>@Html.DisplayNameFor(model => model.Plot): @Model.Plot</p>
+    <div class="card-tabs col m4">
+        <ul class="tabs tabs-fixed-width">
+            <li class="tab"><a class="active" href="#title">@Html.DisplayNameFor(model => model.Title)</a></li>
+            <li class="tab"><a href="#genre">@Html.DisplayNameFor(model => model.Genre)</a></li>
+            <li class="tab"><a href="#plot">@Html.DisplayNameFor(model => model.Plot)</a></li>
+        </ul>
+    </div>
+    <div class="card-content grey lighten-4 col m8">
+        <div class="col" id="title">@Model.Title</div>
+        <div class="col" id="genre">@Model.Genre</div>
+        <div class="col" id="plot">@Model.Plot</div>
     </div>
 </div>
