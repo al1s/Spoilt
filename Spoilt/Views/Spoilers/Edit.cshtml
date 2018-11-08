@@ -4,12 +4,6 @@
     Layout = "_Layout";
 }
 
-@section Scripts {
-    <script>
-        console.log("Testing");
-    </script>
-}
-
 @await Html.PartialAsync("../Shared/_MovieDetails", Model.Movie)
 
 <form asp-action="Edit" asp-controller="Spoilers" asp-route-id="@Model.ID">
