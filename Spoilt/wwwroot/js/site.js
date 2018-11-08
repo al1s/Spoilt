@@ -39,7 +39,7 @@ $('.upvote').on('click', function (e) {
     addVoteForUser(e, movieID, spoilerID);
 });
 
-// Make AJAX call to POST Vote
+// Make AJAX call to POST Vote. Change number of votes on DOM only if vote successfully posted.
 function addVoteForUser(e, movieID, spoilerID) {
     e.preventDefault();
     const userSessionID = getUserConnectionId();
