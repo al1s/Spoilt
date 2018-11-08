@@ -1,15 +1,19 @@
-﻿# Spoil The End
+﻿# Spoilt
 
 ## Description
 The project is a live extensible collection of spoilers for movies and it should answer the simple question: What are the big twists present in popular films?
 
+The user can type a movie title into the search bar to get a list of matching movies from the OMDB database. From there, the user can select a movie (which will add it to a custom API) and add a spoiler to the movie if they wish. Users are also free to browse the movies provided by the custom API and view, add, or update the spoilers for those movies.
+
+Users can also add a vote to a spoiler they like. The number of votes each spoiler has will be displayed in its listing.
+
 ## Deployment
 
-[Azure]()
+The web site is deployed on Azure web services and is available [HERE!](http://spoilt.azurewebsites.net/)
 
 ## API Documentation
 
-[via Swagger](http://spoiltapi.azurewebsites.net)
+This site utilizes two APIs for its movie data. Initial movie data is provided by [The Open Movie Database](http://www.omdbapi.com/). Movie and spoiler data are saved to a custom API. [Click here to learn more about it.](http://spoiltapi.azurewebsites.net)
 
 ## Getting started
 
@@ -27,10 +31,10 @@ The project is a live extensible collection of spoilers for movies and it should
 
 ## Tech stack
 
-Languages and Frameworks: C#, .NET Core, MVC, Entity, Razor, HTML, CSS, Bootstrap, Javascript,  JQuery, SASS
-DB: SQL Server.
-Frontend Server: IIS.
-API tests and documentation: Postman.
+This project utilizes the following tech...
+* __C#__ and __.NET Core__ provide the foundation for this project.
+* __MVC__ and __Entity Framework__ with __Razor Views__ handles the front-end.
+* __HTML__, __JavaScript__, __CSS__, __SASS__, __JQuery__, and __MaterializeCSS__ for front-end presentation and styling.
 
 ## User stories
 
@@ -46,38 +50,14 @@ API tests and documentation: Postman.
 4. As a developer, I want to use EF code first approach, so the framework would deal with DB stuff.
     - SQL server setup implemented through models.
     - CRUD operations work from the box in scaffolded controllers/view.
-5. As an instructor, I want to see the full stack MVC app digesting a custom API implemented in C#, so that I can grade the project using my rubric.
-    - FE - Models
-        - At least 2 Models
-        - Dependency Injection with the Repository Design Pattern:
-            - At least 1 “Service”.
-            - At least 1 Interface.
-    - FE - Views
-        - .cshtml pages
-        - You may use any CSS/JS front-end technologies you wish, as long as they work well with all of the requirements.
-    - FE - Controllers
-        - At least 2 Controllers.
-    - Documentation
-        - Provide documentation for your web app. Include the work-flow, screenshots of the front end for an app, DB Schema, and basic functionality directions on how to use the site;
-        - Endpoint description using Swagger;
-    - API
-        - Have at least 2 Controllers
-        - Have at least 2 Models
-        - No Views Required
-        - At least 2 Endpoints in each Controller
-    - Commented code
-        - What does this code do?
-        - Why do you have it?
-        - Where is the request being sent?
-        - What is the request expected response?
-        - Use Summary Comments!
-    - Database
-        - At least 2 tables
-        - Digital DB Schema (should be present in your Readme)
-    - Tests:
-        - Getters/Setters
-        - API Endpoints (for API Team)
-        - CRUD operations
-    - Deployment
-        - Azure Web App
-        - Azure SQL server
+
+## Images
+
+![Image of the Front Page of Spoilt](./Readme_img/ScreenShot1.png)
+
+![Image of the Movie Details Page from Spoilt](./Readme_img/ScreenShot2.png)
+
+## Credits
+
+Thanks to OMDB for use of their API for movie data.
+Thanks to Ellen Whitwell for her rotten egg drawing!
