@@ -33,6 +33,8 @@ function getUserConnectionId() {
     } else {
         UserConnectionId = !!UserConnectionId ? UserConnectionId : localStorage.getItem('UserConnectionId');
     }
+
+    return UserConnectionId;
 };
 
 // function to create a new user id
@@ -48,15 +50,14 @@ function createUserConnectionId() {
 // Make AJAX call to POST Vote
 function addVoteForUser(e, movieID, spoilerID) {
     e.preventDefault();
-    var token = $('input[name="__RequestVerificationToken"]', form).val();
+    var userSessionID = getUserConnectionId();
     $.ajax({
         url: '/Votes/Create',
         method: 'POST',
         data: {
             MovieID: movieID,
             SpoilerID: spoilerID,
-            UserSessionID: getUserConnectionId(),
-            __RequestVerificationToken: token
+            UserSessionID: userSessionID
         }
     }).then(function (resp, status, xhr) {
         if (status === "500") {
