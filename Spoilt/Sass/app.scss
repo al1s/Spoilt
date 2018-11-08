@@ -31,6 +31,12 @@ html, body {
     overflow: hidden;
 }
 
+.card-image, .about-us img {
+    height: 50%;
+    width: 50%;
+    margin-left: 27%;
+}
+
 nav {
     position: relative;
     top: 0;
@@ -209,3 +215,4 @@ nav .nav-wrapper {
     width: 85%;
     }
 }
+
