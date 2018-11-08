@@ -31,11 +31,6 @@ html, body {
     overflow: hidden;
 }
 
-.about-us img {
-    height: 50%;
-    width: 50%;
-    margin-left: 27%;
-}
 
 nav {
     position: relative;
@@ -178,6 +173,25 @@ nav .nav-wrapper {
 .upvote {
     width: 100%;
 }
+
+.about-us .image-container img {
+    border-radius: 50%;
+    height: 160px;
+    width: 160px;
+}
+
+
+.love {
+    font-size: 20px;
+}
+
+.love .icon {
+    font-size: 12px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+
 @media only screen and (min-width: 993px) {
     .db {
         width: 70%;
