@@ -10,6 +10,7 @@
             </div>
             <div class="card-action">
                 <button class="upvote" data-spoilerID="@Model.ID" data-movieID="@Model.MovieID"><i class="material-icons">arrow_upward</i></button>
+                <p>@Model.Votes</p>
                 <a asp-action="Edit" asp-controller="Spoilers" asp-route-id="@Model.ID">Edit This Spoiler</a>
             </div>
         </div>

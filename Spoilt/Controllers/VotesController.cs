@@ -8,16 +8,19 @@ namespace Spoilt.Controllers
     public class VotesController : Controller
     {
         private IVote _votes;
+        private IUserSession _sessions;
 
-        public VotesController(IVote context)
+        public VotesController(IVote votes, IUserSession sessions)
         {
-            _votes = context;
+            _votes = votes;
+            _sessions = sessions;
         }
 
         // POST: Votes/Create
         [HttpPost]
         public Task Create([Bind("ID,MovieID,SpoilerID,UserSessionID")] Vote vote)
         {
+            _sessions.CreateSessionString()
             return _votes.AddVote(vote);
         }
 

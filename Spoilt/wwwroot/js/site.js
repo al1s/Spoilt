@@ -56,7 +56,7 @@ function addVoteForUser(e, movieID, spoilerID) {
         data: {
             MovieID: movieID,
             SpoilerID: spoilerID,
-            UserSessionID: userSessionID
+            SessionID: userSessionID
         }
     })
         .then((resp, status, xhr) => {

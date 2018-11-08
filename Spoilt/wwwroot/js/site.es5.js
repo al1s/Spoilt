@@ -57,7 +57,7 @@ function addVoteForUser(e, movieID, spoilerID) {
         data: {
             MovieID: movieID,
             SpoilerID: spoilerID,
-            UserSessionID: userSessionID
+            SessionID: userSessionID
         }
     }).then(function (resp, status, xhr) {
         if (status === "500") {
