@@ -109,12 +109,12 @@ namespace SpoiltTests
                 ID = 1,
                 MovieID = "DD12211",
                 SpoilerText = "MyText",
-                CreatedAt = DateTime.Parse("1999/1/1")
+                Created = DateTime.Parse("1999/1/1")
             };
             Assert.Equal(1, spoiler.ID);
             Assert.Equal("DD12211", spoiler.MovieID);
             Assert.Equal("MyText", spoiler.SpoilerText);
-            Assert.Equal(DateTime.Parse("1999/1/1"), spoiler.CreatedAt);
+            Assert.Equal(DateTime.Parse("1999/1/1"), spoiler.Created);
         }
         /// <summary>
         /// Test whether can get Spoiler data
