@@ -1,9 +1,9 @@
 ﻿// Add Save/Update buttons click handlers
 // Add UserSession id handling
 // $('#spoilerUpVoteButton').on('click', addVoteForUser);
+//$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
 'use strict';
 
-$('#spoilerDownVoteButton').on('click', deleteVoteForUser);
 MovieId = $('#movieId').text();
 SpoilerId = $('#SpoilerId');
 
@@ -72,10 +72,23 @@ $(document).ready(function () {
     $('#UserSessionID').val(getUserConnectionId());
 });
 
+// Use jquery to render changes in vote on card
+// When page is reloaded, grab votes from table
 $('.upvote').on('click', function (e) {
     e.preventDefault();
     var movieID = $(this).data("movieid");
     var spoilerID = $(this).data("spoilerid");
+
+    // Post to Votes table
     addVoteForUser(e, movieID, spoilerID);
+
+    // Use jquery to display changes in vote dynamically
+    var votes = parseInt($('.display-votes-spoiler-' + spoilerID).text());
+    votes = ++votes;
+    displayVotes(votes, spoilerID);
 });
+
+function displayVotes(votes, spoilerID) {
+    $('.display-votes-spoiler-' + spoilerID).text(votes);
+}
 

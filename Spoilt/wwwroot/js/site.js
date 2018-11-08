@@ -5,9 +5,6 @@
 MovieId = $('#movieId').text();
 SpoilerId = $('#SpoilerId');
 
-// Use ajax to render changes in vote on card
-// When page is reloaded, grab votes from table
-
 //function deleteVoteForUser(e) {
 //    e.preventDefault();
 //    $.ajax({
@@ -74,9 +71,24 @@ $(document).ready(function () {
     $('#UserSessionID').val(getUserConnectionId());
 });
 
+
+// Use jquery to render changes in vote on card
+// When page is reloaded, grab votes from table
 $('.upvote').on('click', function (e) {
     e.preventDefault();
     const movieID = $(this).data("movieid");
     const spoilerID = $(this).data("spoilerid");
+
+
+    // Post to Votes table
     addVoteForUser(e, movieID, spoilerID);
+
+    // Use jquery to display changes in vote dynamically
+    let votes = parseInt($(`.display-votes-spoiler-${spoilerID}`).text());
+    votes = ++votes;
+    displayVotes(votes, spoilerID);
 });
+
+function displayVotes(votes, spoilerID) {
+    $(`.display-votes-spoiler-${spoilerID}`).text(votes);
+}
