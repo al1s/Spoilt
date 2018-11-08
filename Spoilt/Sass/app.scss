@@ -11,9 +11,6 @@
     font-weight: bold;
 }
 
-.card {
-
-}
 .card .card-content {
     height: 240px;
 }
@@ -27,4 +24,8 @@
     overflow: hidden;
 }
 
-
+.card-image, .about-us img {
+    height: 50%;
+    width: 50%;
+    margin-left: 27%;
+}
