@@ -1,6 +1,13 @@
 ﻿@import "materialize";
 @import "typography";
 
+html, body {
+    height: 100%;
+}
+
+.brand-logo img {
+    width: 80px;
+}
 .card-image img {
     max-height: 300px;
     object-fit: cover;
@@ -29,3 +36,183 @@
     width: 50%;
     margin-left: 27%;
 }
+
+nav {
+    position: relative;
+    top: 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    z-index: 10;
+    color: #fff;
+    background-color: #ba68c8;
+    width: 100%;
+    height: 56px;
+    line-height: 56px;
+}
+
+nav .nav-background {
+    overflow: hidden;
+    position: absolute;
+    top: 56px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    opacity: .1;
+}
+
+.nav-background .repeat-bg {
+    height: 100%;
+    background-repeat: repeat;
+    opacity: 1;
+}
+
+nav .nav-header {
+    clear: both;
+    padding: 40px 0;
+}
+
+nav.nav-extended .nav-wrapper {
+    min-height: 56px;
+    height: auto;
+}
+
+@media only screen and (min-width: 601px){
+    nav.nav-extended .nav-wrapper {
+        min-height: 64px;
+    }
+}
+
+nav .categories-wrapper {
+    background-color: inherit;
+    max-height: 64px;
+}
+
+
+.categories-container.pinned .brand-logo {
+    display: block !important;
+}
+
+.categories-wrapper .categories-container {
+    height: 0px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.categories-container.pinned {
+    height: auto;
+    opacity: 1;
+    pointer-events: all;
+    -moz-transition: opacity .5s;
+    -ms-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+.af.lighten-1 {
+    background-color: #ab47bc !important;
+}
+
+nav .nav-header h1 {
+    font-size: 56px;
+    font-weight: 600;
+}
+
+
+
+nav .categories-wrapper .categories-container.pinned {
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+}
+
+.pin-top {
+    position: relative;
+}
+
+
+
+.t-padding {
+    margin-top: 100px;
+}
+
+// Class for when element is below threshold
+.pin-bottom {
+    position: relative;
+}
+
+// Class for when element is pinned
+.pinned {
+    position: fixed !important;
+}
+
+.db {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+}
+
+.de, .center-align {
+    text-align: center;
+}
+
+
+nav.nav-extended .nav-wrapper {
+    min-height: 56px;
+    height: auto;
+}
+
+nav .nav-wrapper {
+    position: relative;
+    height: 100%;
+}
+
+
+.collection {
+    margin: .5rem 0 1rem 0;
+    overflow: hidden;
+    position: relative;
+    border: none;
+}
+
+.collection .collection-item {
+    background-color: #fff;
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.upvote {
+    width: 100%;
+}
+@media only screen and (min-width: 993px) {
+    .db {
+        width: 70%;
+    }
+}
+
+
+
+
+@media only screen and (min-width: 601px) {
+    nav.nav-extended .nav-wrapper {
+        min-height: 64px;
+    }
+
+    .card .card-content .card-plot {
+        height: 40%;
+    }
+}
+
+@media only screen and (min-width: 993px){
+    .db {
+    width: 70%;
+    }
+}
+
+@media only screen and (min-width: 601px){
+    .db {
+    width: 85%;
+    }
+}
+

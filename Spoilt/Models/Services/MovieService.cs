@@ -37,14 +37,22 @@ namespace Spoilt.Models.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var omdbResult = await response.Content.ReadAsAsync<OMDB>();
-                    foreach (var movieResult in omdbResult.Search)
+                    if (omdbResult.Error != null)
                     {
-                        Movie movie = new Movie();
-                        movie.ID = movieResult.ImdbID;
-                        movie.Title = movieResult.Title;
-                        movie.Poster = movieResult.Poster;
-                        result.Add(movie);
+                        result = null;
                     }
+                    else
+                    {
+                        foreach (var movieResult in omdbResult.Search)
+                        {
+                            Movie movie = new Movie();
+                            movie.ID = movieResult.ImdbID;
+                            movie.Title = movieResult.Title;
+                            movie.Poster = movieResult.Poster;
+                            result.Add(movie);
+                        }
+                    }
+                    
                 }
                 return result;
             }

@@ -1,25 +1,25 @@
-﻿@model IEnumerable<Spoilt.Models.Movie>
+@model IEnumerable<Spoilt.Models.Movie>
 @{
     ViewData["Title"] = "Home";
     Layout = "_Layout";
 }
 
-<div class="section no-pad-bot" id="index-banner">
-    <div class="container">
-        <br><br>
-            <h1 class="header center orange-text">SPOILT</h1>
-            <div class="row center">
-                <h5 class="header col s12 light">The site that lets you view and contribute movie spoilers</h5>
-                <p>Consider this your Spoiler Warning</p>
-            </div>
-    </div>
-</div>
+@if (ViewBag.Error != null)
+{
+    <div class="card-panel red"><p class="black-text">@ViewBag.Error</p></div>
+}
+
+
 @{
     await Html.RenderPartialAsync("/Views/Shared/_SearchBar.cshtml");
 }
-<div class="row">
-    @foreach (var item in Model)
-    {
-        await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
-    }
-</div>
+
+@if (Model != null)
+{
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            await Html.RenderPartialAsync("../Shared/_MovieCard.cshtml", item);
+        }
+    </div>
+}
