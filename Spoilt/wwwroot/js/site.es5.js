@@ -7,24 +7,6 @@
 MovieId = $('#movieId').text();
 SpoilerId = $('#SpoilerId');
 
-//function deleteVoteForUser(e) {
-//    e.preventDefault();
-//    $.ajax({
-//        url: '/Votes/DeleteConfirmed',
-//        method: 'POST',
-//        data: {
-//            MovieId,
-//            SpoilerId,
-//            SessionId: getUserConnectionId()
-//        }
-//    })
-//        .then((resp, status, xhr) => {
-//            if (status === "500") {
-//                errMsg = xhr.responseJSON();
-//            }
-//        })
-//}
-
 // Check local strorage for userId and create if needed
 var UserConnectionId = undefined;
 function getUserConnectionId() {
@@ -48,25 +30,6 @@ function createUserConnectionId() {
     return str;
 };
 
-// Make AJAX call to POST Vote
-function addVoteForUser(e, movieID, spoilerID) {
-    e.preventDefault();
-    var userSessionID = getUserConnectionId();
-    $.ajax({
-        url: '/Votes/Create',
-        method: 'POST',
-        data: {
-            MovieID: movieID,
-            SpoilerID: spoilerID,
-            SessionID: userSessionID
-        }
-    }).then(function (resp, status, xhr) {
-        if (status === "500") {
-            errMsg = xhr.responseJSON();
-        }
-    });
-}
-
 $(document).ready(function () {
     $('.sidenav').sidenav();
     var b = $("nav .categories-container");
@@ -81,8 +44,7 @@ $(document).ready(function () {
 // Vote limiting variable
 var userGetsOneVote = 0;
 
-// Use jquery to render changes in vote on card
-// When page is reloaded, grab votes from table
+// Event listener and handler for voting functionality
 $('.upvote').on('click', function (e) {
     e.preventDefault();
     var movieID = $(this).data("movieid");
@@ -90,14 +52,33 @@ $('.upvote').on('click', function (e) {
 
     // Post to Votes table
     addVoteForUser(e, movieID, spoilerID);
-
-    // Use jquery to display changes in vote dynamically
-    var votes = parseInt($('.display-votes-spoiler-' + spoilerID).text());
-    if (userGetsOneVote < 1) {
-        ++votes;
-        ++userGetsOneVote;
-    }
-
-    $('.display-votes-spoiler-' + spoilerID).text(votes);
 });
+
+// Make AJAX call to POST Vote
+function addVoteForUser(e, movieID, spoilerID) {
+    e.preventDefault();
+    var userSessionID = getUserConnectionId();
+    $.ajax({
+        url: '/Votes/Create',
+        method: 'POST',
+        data: {
+            MovieID: movieID,
+            SpoilerID: spoilerID,
+            SessionID: userSessionID
+        }
+    }).done(function (resp, status, xhr) {
+        if (status === "200") {
+            errMsg = xhr.responseJSON();
+        } else if (statuc === "200") {
+            var votes = parseInt($('.display-votes-spoiler-' + spoilerID).text());
+
+            if (userGetsOneVote < 1) {
+                ++votes;
+                ++userGetsOneVote;
+            }
+
+            $('.display-votes-spoiler-' + spoilerID).text(votes);
+        }
+    });
+}
 
