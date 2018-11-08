@@ -72,6 +72,9 @@ $(document).ready(function () {
 });
 
 
+// Vote limiting variable
+let userGetsOneVote = 0;
+
 // Use jquery to render changes in vote on card
 // When page is reloaded, grab votes from table
 $('.upvote').on('click', function (e) {
@@ -85,7 +88,11 @@ $('.upvote').on('click', function (e) {
 
     // Use jquery to display changes in vote dynamically
     let votes = parseInt($(`.display-votes-spoiler-${spoilerID}`).text());
-    votes = ++votes;
+    if (userGetsOneVote < 1) {
+        ++votes;
+        ++userGetsOneVote;
+    }
+
     displayVotes(votes, spoilerID);
 });
 
