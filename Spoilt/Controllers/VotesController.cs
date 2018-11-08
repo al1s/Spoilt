@@ -23,6 +23,7 @@ namespace Spoilt.Controllers
             // Creates the Session instance as a part of the UserSession service
             _sessions.CreateSessionString(vote.UserSessionID);
 
+            var checkIfVoteAlreadyExists = _votes.
             return _votes.AddVote(vote);
         }
 

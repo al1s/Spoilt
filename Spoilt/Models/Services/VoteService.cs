@@ -31,6 +31,14 @@ namespace Spoilt.Models.Services
         public int GetVotesBySpoilerID(int id)
         {
             int allVotesForSpoiler = _context.Votes.Where(v => v.SpoilerID == id).Count();
+
+            return allVotesForSpoiler;
+        }
+
+        public int CheckIfUserAlreadyVotedForSpoiler(int spoilerID, string userSession)
+        {
+            int allVotesForSpoiler = _context.Votes.Where(v => v.SpoilerID == spoilerID && v.UserSessionID == userSession).Count();
+
             return allVotesForSpoiler;
         }
     }

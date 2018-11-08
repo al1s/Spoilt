@@ -82,7 +82,6 @@ $('.upvote').on('click', function (e) {
     const movieID = $(this).data("movieid");
     const spoilerID = $(this).data("spoilerid");
 
-
     // Post to Votes table
     addVoteForUser(e, movieID, spoilerID);
 
@@ -93,9 +92,5 @@ $('.upvote').on('click', function (e) {
         ++userGetsOneVote;
     }
 
-    displayVotes(votes, spoilerID);
-});
-
-function displayVotes(votes, spoilerID) {
     $(`.display-votes-spoiler-${spoilerID}`).text(votes);
-}
+});
