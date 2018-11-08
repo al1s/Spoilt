@@ -18,13 +18,19 @@ namespace Spoilt.Controllers
 
         // POST: Votes/Create
         [HttpPost]
-        public async Task Create([Bind("ID,MovieID,SpoilerID,UserSessionID")] Vote vote)
+        public async Task<IActionResult> Create([Bind("ID,MovieID,SpoilerID,UserSessionID")] Vote vote)
         {
             // Creates the Session instance as a part of the UserSession service
             await _sessions.CreateSessionString(vote.UserSessionID);
 
             var checkIfVoteAlreadyExists = _votes.CheckIfUserAlreadyVotedForSpoiler(vote.SpoilerID, vote.UserSessionID);
-            if (checkIfVoteAlreadyExists == 0) await _votes.AddVote(vote);
+
+            if (checkIfVoteAlreadyExists == 0)
+            {
+                await _votes.AddVote(vote);
+                return new JsonResult("{ voted: false} ");
+            }
+            else return new JsonResult("{ voted: true }");
         }
 
         // POST: Votes/Delete/5
