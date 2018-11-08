@@ -1,5 +1,6 @@
 ﻿using Spoilt.Data;
 using Spoilt.Models.Interfaces;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Spoilt.Models.Services
@@ -19,7 +20,8 @@ namespace Spoilt.Models.Services
             {
                 ID = localStorageString
             };
-            _context.Sessions.Add(session);
+
+            if (_context.Sessions.FirstOrDefault(s => s.ID == localStorageString) == null) _context.Sessions.Add(session);
             await _context.SaveChangesAsync();
 
             return session;
