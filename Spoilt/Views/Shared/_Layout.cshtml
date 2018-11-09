@@ -14,7 +14,6 @@
     <body>
         @if (controller == "Movies" && action == "Index")
         {
-
             <nav class="nav-extended">
                 <div class="nav-background">
                     <div class="repeat-bg" style="background-image: url('/images/bg-repeat.png');"></div>
@@ -38,7 +37,7 @@
                 <div class="categories-wrapper af lighten-1">
                     <nav class="categories-container">
                         <a href="/" class="brand-logo" style="display:none;"><img src="~/images/logo.png" /></a>
-                        <ul class="categories db">
+                        <ul class="bt right hide-on-med-and-down">
                             <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
                             <li>@Html.ActionLink("More Info", "Index", "About")</li>
                         </ul>
@@ -54,11 +53,13 @@
         else
         {
             <nav class="categories-container pin-top pinned">
-                <a href="/" class="brand-logo"><img src="~/images/logo.png" /></a>
-                <ul class="categories db">
-                    <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
-                    <li>@Html.ActionLink("More Info", "Index", "About")</li>
-                </ul>
+                <div class="nav-wrapper db">
+                    <a href="/" class="brand-logo"><img src="~/images/logo.png" /></a>
+                    <ul class="bt right hide-on-med-and-down">
+                        <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
+                        <li>@Html.ActionLink("More Info", "Index", "About")</li>
+                    </ul>
+                </div>
             </nav>
             <div class="container t-padding">
                 <div class="section">

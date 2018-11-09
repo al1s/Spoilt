@@ -2,7 +2,7 @@
 
 <div class="card row">
     <div class="col m4">
-        <img alt="@Model.Title" src="@Model.Poster">
+        <img alt="@Model.Title" src="@Model.Poster" onerror="this.onerror=null;this.src='/images/poster_placeholder.png';">
     </div>
     <div class="col m6">
         <h3>@Model.Title</h3>

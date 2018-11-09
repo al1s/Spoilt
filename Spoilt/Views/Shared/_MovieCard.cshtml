@@ -2,7 +2,7 @@
 <div class="col s12 m4">
     <div class="card">
         <div class="card-image">
-            <img alt="@Model.Title" src="@Model.Poster">
+            <img alt="@Model.Title" src="@Model.Poster" onerror="this.onerror=null;this.src='/images/poster_placeholder.png';">
             <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">+</i></a>
 
             <a asp-action="Create"
@@ -14,8 +14,14 @@
         </div>
         <div class="card-content">
             <span class="card-title">@Model.Title</span>
-            <span class="card-genre">@Html.DisplayNameFor(model => model.Genre): @Model.Genre</span>
-            <p class="card-plot">@Model.Plot</p>
+            @if (@Model.Genre != null && Model.Genre != "N/A")
+            {
+                <span class="card-genre">@Html.DisplayNameFor(model => model.Genre): @Model.Genre</span>
+            }
+            @if (@Model.Plot != "N/A")
+            {
+                <p class="card-plot">@Model.Plot</p>
+            }
         </div>
         <div class="card-action">
             <a asp-action="Details" asp-controller="Movies" asp-route-id="@Model.ID">View Details</a>
