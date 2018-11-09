@@ -49,6 +49,8 @@ namespace Spoilt.Models.Services
                             movie.ID = movieResult.ImdbID;
                             movie.Title = movieResult.Title;
                             movie.Poster = movieResult.Poster;
+                            movie.Plot = movieResult.Plot;
+                            movie.Genre = movieResult.Genre;
                             result.Add(movie);
                         }
                     }
