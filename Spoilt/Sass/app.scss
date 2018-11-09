@@ -227,6 +227,13 @@ nav .nav-wrapper {
     }
 }
 
-.pad-movie-detail {
+.movie-detail .pad-movie-detail {
     padding-left: 20px;
+}
+
+.movie-detail .col.movie-detail-poster {
+    padding: 0px;
+}
+.movie-detail .col.movie-detail-poster img{
+width: 100%;
 }

@@ -19,8 +19,8 @@
                     <div class="repeat-bg" style="background-image: url('/images/bg-repeat.png');"></div>
                 </div>
                 <div class="nav-wrapper db">
-                    <a href="/" class="brand-logo"><img src="~/images/logo.png" /></a>
-                    <ul class="bt right hide-on-med-and-down">
+                    <a href="/" class="brand-logo left"><img src="~/images/logo.png" /></a>
+                    <ul class="bt right">
                         <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
                         <li>@Html.ActionLink("More Info", "Index", "About")</li>
                     </ul>
@@ -36,11 +36,13 @@
 
                 <div class="categories-wrapper af lighten-1">
                     <nav class="categories-container">
-                        <a href="/" class="brand-logo" style="display:none;"><img src="~/images/logo.png" /></a>
-                        <ul class="bt right hide-on-med-and-down">
-                            <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
-                            <li>@Html.ActionLink("More Info", "Index", "About")</li>
-                        </ul>
+                        <div class="nav-wrapper db">
+                            <a href="/" class="brand-logo left" style="display:none;"><img src="~/images/logo.png" /></a>
+                            <ul class="bt right">
+                                <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
+                                <li>@Html.ActionLink("More Info", "Index", "About")</li>
+                            </ul>
+                            </div>
                     </nav>
                 </div>
             </nav>
@@ -54,8 +56,8 @@
         {
             <nav class="categories-container pin-top pinned">
                 <div class="nav-wrapper db">
-                    <a href="/" class="brand-logo"><img src="~/images/logo.png" /></a>
-                    <ul class="bt right hide-on-med-and-down">
+                    <a href="/" class="brand-logo left"><img src="~/images/logo.png" /></a>
+                    <ul class="bt right">
                         <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
                         <li>@Html.ActionLink("More Info", "Index", "About")</li>
                     </ul>
