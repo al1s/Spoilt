@@ -8,14 +8,17 @@
 <div class="row">
     <form class="col s12" asp-controller="Movies" asp-action="Index" method="get">
         <div class="row">
-            <div class="input-field col s10">
-                <i class="material-icons prefix">search</i>
+            <div class="input-field col s10 m10">
+                <i class="material-icons prefix hide-on-small-only">search</i>
                 <input id="icon_prefix2" type="search" name="title" class="autocomplete" required>
                 <label for="icon_prefix2">Search Movie</label>
             </div>
-            <div class="input-field col s2">
-                <button class="btn-large waves-effect waves-light" type="submit" name="action">
+            <div class="input-field col s1 m2">
+                <button class="btn-large waves-effect waves-light hide-on-small-only" type="submit" name="action">
                     Search
+                </button>
+                <button class="btn waves-effect hide-on-med-and-up waves-light show-on-small" type="submit" name="action">
+                    <i class="material-icons">search</i>
                 </button>
             </div>
         </div>

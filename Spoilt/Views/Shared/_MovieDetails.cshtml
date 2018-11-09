@@ -1,10 +1,10 @@
 ﻿@model Spoilt.Models.Movie
 
-<div class="card row">
-    <div class="col m4">
+<div class="card row movie-detail">
+    <div class="col m4 s12 movie-detail-poster">
         <img alt="@Model.Title" src="@Model.Poster" onerror="this.onerror=null;this.src='/images/poster_placeholder.png';">
     </div>
-    <div class="col m6 pad-movie-detail">
+    <div class="col m8 s12 pad-movie-detail">
         <h3>@Model.Title</h3>
         <p>@Html.DisplayNameFor(model => model.Genre): @Model.Genre</p>
         <p>@Html.DisplayNameFor(model => model.Plot): @Model.Plot</p>
