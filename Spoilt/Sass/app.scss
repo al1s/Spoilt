@@ -8,9 +8,12 @@ html, body {
 .brand-logo img {
     width: 80px;
 }
+
 .card-image img {
     max-height: 300px;
     object-fit: cover;
+    background-image: url("/images/poster_placeholder.png");
+    height: 300px;
 }
 
 .card .card-title {
@@ -71,7 +74,7 @@ nav.nav-extended .nav-wrapper {
     height: auto;
 }
 
-@media only screen and (min-width: 601px){
+@media only screen and (min-width: 601px) {
     nav.nav-extended .nav-wrapper {
         min-height: 64px;
     }
@@ -174,10 +177,14 @@ nav .nav-wrapper {
     width: 100%;
 }
 
+
 .about-us .image-container img {
     border-radius: 50%;
     height: 160px;
     width: 160px;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 
@@ -208,14 +215,25 @@ nav .nav-wrapper {
     }
 }
 
-@media only screen and (min-width: 993px){
+@media only screen and (min-width: 993px) {
     .db {
-    width: 70%;
+        width: 70%;
     }
 }
 
-@media only screen and (min-width: 601px){
+@media only screen and (min-width: 601px) {
     .db {
-    width: 85%;
+        width: 85%;
     }
+}
+
+.movie-detail .pad-movie-detail {
+    padding-left: 20px;
+}
+
+.movie-detail .col.movie-detail-poster {
+    padding: 0px;
+}
+.movie-detail .col.movie-detail-poster img{
+width: 100%;
 }
