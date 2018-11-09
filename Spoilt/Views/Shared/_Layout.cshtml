@@ -1,38 +1,76 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+    var action = ViewContext.RouteData.Values["action"].ToString();
+}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>Spoilt @ViewBag.Title</title>
+        <link href="~/css/app.css" rel="stylesheet" type="text/css" />
+        <!-- Material design icons -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        @if (controller == "Movies" && action == "Index")
+        {
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Spoilt @ViewBag.Title</title>
-    <link href="~/css/app.css" rel="stylesheet" type="text/css" />
-    <!-- Material design icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <nav class="nav-extended">
+                <div class="nav-background">
+                    <div class="repeat-bg" style="background-image: url('/images/bg-repeat.png');"></div>
+                </div>
+                <div class="nav-wrapper db">
+                    <a href="/" class="brand-logo"><img src="~/images/logo.png" /></a>
+                    <ul class="bt right hide-on-med-and-down">
+                        <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
+                        <li>@Html.ActionLink("More Info", "Index", "About")</li>
+                    </ul>
+                    <div class="nav-header de">
+                        <h1>
+                            Spoilt
+                        </h1>
+                        <div class="ge">
+                            The site that lets you view and contribute movie spoilers. Consider this your Spoiler Warning
+                        </div>
+                    </div>
+                </div>
 
-</head>
-<body>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">Spoilt</a>
-            <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
-                <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
-                <li>@Html.ActionLink("More Info", "Index", "About")</li>
-            </ul>
-        </div>
-    </nav>
+                <div class="categories-wrapper af lighten-1">
+                    <nav class="categories-container">
+                        <a href="/" class="brand-logo" style="display:none;"><img src="~/images/logo.png" /></a>
+                        <ul class="categories db">
+                            <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
+                            <li>@Html.ActionLink("More Info", "Index", "About")</li>
+                        </ul>
+                    </nav>
+                </div>
+            </nav>
+            <div class="container">
+                <div class="section">
+                    @RenderBody()
+                </div>
+            </div>
+        }
+        else
+        {
+            <nav class="categories-container pin-top pinned">
+                <a href="/" class="brand-logo"><img src="~/images/logo.png" /></a>
+                <ul class="categories db">
+                    <li>@Html.ActionLink("Search Movies", "Index", "Movies")</li>
+                    <li>@Html.ActionLink("More Info", "Index", "About")</li>
+                </ul>
+            </nav>
+            <div class="container t-padding">
+                <div class="section">
+                    @RenderBody()
+                </div>
+            </div>
+        }
+     
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <div class="container">
-        <div class="section">
-            @RenderBody()
-        </div>
-    </div>
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-    <script src="/js/site.js"></script>
-    @RenderSection("scripts", required: false)
-
-</body>
+        <script src="~/js/site.js"></script>
+    </body>
 </html>
