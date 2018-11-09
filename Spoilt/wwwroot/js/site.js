@@ -58,7 +58,7 @@ function addVoteForUser(e, movieID, spoilerID) {
     })
         .then((resp, status, xhr) => {
             voteStatus = JSON.parse(xhr.responseText);
-            if (!voteStatus.voted) {
+            if (voteStatus.voteCounted) {
                 let votes = parseInt($(`.display-votes-spoiler-${spoilerID}`).text());
 
                 ++votes;
