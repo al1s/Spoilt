@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Spoilt.Models
 {
@@ -8,6 +8,7 @@ namespace Spoilt.Models
         // Model props:
         public int ID { get; set; }
         public string MovieID { get; set; }
+        [Required(ErrorMessage = "That's not a very good spoiler.")]
         public string SpoilerText { get; set; }
         public DateTime Created { get; set; }
 

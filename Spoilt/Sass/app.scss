@@ -8,6 +8,7 @@ html, body {
 .brand-logo img {
     width: 80px;
 }
+
 .card-image img {
     max-height: 300px;
     object-fit: cover;
@@ -71,7 +72,7 @@ nav.nav-extended .nav-wrapper {
     height: auto;
 }
 
-@media only screen and (min-width: 601px){
+@media only screen and (min-width: 601px) {
     nav.nav-extended .nav-wrapper {
         min-height: 64px;
     }
@@ -208,14 +209,14 @@ nav .nav-wrapper {
     }
 }
 
-@media only screen and (min-width: 993px){
+@media only screen and (min-width: 993px) {
     .db {
-    width: 70%;
+        width: 70%;
     }
 }
 
-@media only screen and (min-width: 601px){
+@media only screen and (min-width: 601px) {
     .db {
-    width: 85%;
+        width: 85%;
     }
 }
