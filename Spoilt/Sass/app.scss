@@ -8,9 +8,12 @@ html, body {
 .brand-logo img {
     width: 80px;
 }
+
 .card-image img {
     max-height: 300px;
     object-fit: cover;
+    background-image: url("/images/poster_placeholder.png");
+    height: 300px;
 }
 
 .card .card-title {
@@ -178,6 +181,9 @@ nav .nav-wrapper {
     border-radius: 50%;
     height: 160px;
     width: 160px;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
 }
 
 
