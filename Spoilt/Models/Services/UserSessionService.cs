@@ -14,17 +14,18 @@ namespace Spoilt.Models.Services
             _context = context;
         }
 
-        public async Task<UserSession> CreateSessionString(string localStorageString)
+        public async Task CreateSessionString(string localStorageString)
         {
-            UserSession session = new UserSession
+            if (_context.Sessions.FirstOrDefault(s => s.ID == localStorageString) == null)
             {
-                ID = localStorageString
-            };
+                UserSession session = new UserSession
+                {
+                    ID = localStorageString
+                };
 
-            if (_context.Sessions.FirstOrDefault(s => s.ID == localStorageString) == null) _context.Sessions.Add(session);
-            await _context.SaveChangesAsync();
-
-            return session;
+                _context.Sessions.Add(session);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
