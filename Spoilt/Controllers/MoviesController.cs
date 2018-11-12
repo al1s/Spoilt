@@ -3,6 +3,9 @@ using Spoilt.Models;
 using Spoilt.Models.Interfaces;
 using System.Linq;
 using System.Threading.Tasks;
+using Spoilt.Models.Services;
+using System.Linq;
+
 
 namespace Spoilt.Controllers
 {
@@ -74,6 +77,7 @@ namespace Spoilt.Controllers
                 int numberOfVotesPerSpoiler = _votes.GetVotesBySpoilerID(spoiler.ID);
                 spoiler.Votes = numberOfVotesPerSpoiler;
             }
+
 
             var sorted = movie.Spoilers.OrderByDescending(x => x.Votes);
             movie.Spoilers = sorted.ToList();
