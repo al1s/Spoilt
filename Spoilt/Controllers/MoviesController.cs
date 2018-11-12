@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Spoilt.Models;
 using Spoilt.Models.Interfaces;
-using System.Threading.Tasks;
-using System;
-using Spoilt.Models.Services;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Spoilt.Controllers
 {
@@ -25,29 +23,30 @@ namespace Spoilt.Controllers
         }
 
         /// <summary>
+        /// Gets all movies from the custom API
+        /// </summary>
+        /// <returns>View at Movies/Index with movie data provided by custom API</returns>
+        public async Task<IActionResult> Index()
+        {
+            var myMovies = await _movies.GetMovies();
+            return View(myMovies);
+        }
+
+        /// <summary>
         /// Gets all movies from the custom API, or all movies with titles containing a string if one is provided
         /// </summary>
         /// <param name="title">A string the user inputs into a search bar</param>
         /// <returns>View at Movies/Index with movie data provided by custom API</returns>
-        public async Task<IActionResult> Index(string title)
+        public async Task<IActionResult> Search(string title)
         {
             ViewBag.Error = null;
-            if (title != null)
+            var myMovies = await _movies.GetMoviesByTitle(title);
+            if (myMovies.Count() == 0)
             {
-                var myMovies = await _movies.GetMoviesByTitle(title);
-                if (myMovies == null)
-                {
-                    myMovies = await _movies.GetMovies();
-                    ViewBag.Error = "Too Many Results! Please refine your search.";
-                    return View(myMovies);
-                }
-                return View(myMovies);
+                myMovies = await _movies.GetMovies();
+                ViewBag.Error = "Too Many Results! Please refine your search.";
             }
-            else
-            {
-                var myMovies = await _movies.GetMovies();
-                return View(myMovies);
-            }
+            return View("Index", myMovies);
         }
 
         /// <summary>
@@ -58,9 +57,16 @@ namespace Spoilt.Controllers
         [HttpGet]
         public async Task<IActionResult> Details(string id)
         {
-            if (id == null) return NotFound();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             var movie = await _movies.GetMovieById(id.ToString());
-            if (movie == null) return NotFound();
+            if (movie == null)
+            {
+                return NotFound();
+            }
 
             // Set the Votes property per each spoiler object using a method provided by the VoteService
             foreach (Spoiler spoiler in movie.Spoilers)

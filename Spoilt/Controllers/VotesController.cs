@@ -38,9 +38,9 @@ namespace Spoilt.Controllers
             if (checkIfVoteAlreadyExists == 0)
             {
                 await _votes.AddVote(vote);
-                return new JsonResult( new { voted = false} );
+                return new JsonResult( new { voteCounted = true } );
             }
-            else return new JsonResult( new { voted = true} );
+            else return new JsonResult( new { voteCounted = false } );
         }
 
         /// <summary>
