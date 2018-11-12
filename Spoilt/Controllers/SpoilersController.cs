@@ -41,10 +41,10 @@ namespace Spoilt.Controllers
         /// <param name="spoiler">Relevent data from the form to create the new Spoiler object</param>
         /// <returns>Redirects the user to view at Movies/Details for movie after creating new spoiler object via call to custom api</returns>
         [HttpPost]
-        public async Task<IActionResult> Create(string id, [Bind("SpoilerText, MovieID")] Spoiler spoiler)
+        public async Task<IActionResult> Create(string MovieID, [Bind("SpoilerText, MovieID")] Spoiler spoiler)
         {
             bool result = false;
-            if (id != spoiler.MovieID)
+            if (MovieID != spoiler.MovieID)
             {
                 return NotFound();
             }
@@ -66,9 +66,9 @@ namespace Spoilt.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction("Details", "Movies", new { id = id });
+                return RedirectToAction("Details", "Movies", new { id = MovieID });
             }
-            var movie = await _movie.GetMovieById(id);
+            var movie = await _movie.GetMovieById(MovieID);
             ViewBag.Movie = movie;
             return View();
         }
