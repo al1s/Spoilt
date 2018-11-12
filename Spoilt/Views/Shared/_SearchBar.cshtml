@@ -3,15 +3,22 @@
     ViewData["Title"] = "_SearchBar";
 }
 
-<h2>Search:</h2>
-
-@* Wrap this search form in something visible and pretty *@
-<div>
-    <form asp-controller="Movies" asp-action="Search" method="get">
-        <div class="input-field">
-            <input id="search" type="search" name="title" required>
-            <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-            <i class="material-icons">close</i>
+<div class="row">
+    <form class="col s12" asp-controller="Movies" asp-action="Search" method="get">
+        <div class="row">
+            <div class="input-field col s10 m10">
+                <i class="material-icons prefix hide-on-small-only">search</i>
+                <input id="icon_prefix2" type="search" name="title" class="autocomplete" required>
+                <label for="icon_prefix2">Search Movie</label>
+            </div>
+            <div class="input-field col s1 m2">
+                <button class="btn-large waves-effect waves-light hide-on-small-only" type="submit" name="action">
+                    Search
+                </button>
+                <button class="btn waves-effect hide-on-med-and-up waves-light show-on-small" type="submit" name="action">
+                    <i class="material-icons">search</i>
+                </button>
+            </div>
         </div>
     </form>
 </div>

@@ -4,14 +4,19 @@
     Layout = "_Layout";
 }
 
-@await Html.PartialAsync("../Shared/_MovieDetails", Model)
+<div class="row">
+    <div class="col s12 m8 offset-m2">
 
-<a asp-controller="Spoilers" asp-action="Create" asp-route-id="@Model.ID" class="btn">Add spoiler!</a>
+        @await Html.PartialAsync("../Shared/_MovieDetails", Model)
 
-<ul class="collection">
-    @foreach (Spoiler spoiler in Model.Spoilers)
-    {
-        @await Html.PartialAsync("../Shared/_Spoiler", spoiler)
-    }
+        <a asp-controller="Spoilers" asp-action="Create" asp-route-id="@Model.ID" class="btn">Add spoiler!</a>
 
-</ul>
+        <ul class="collection">
+            @foreach (Spoiler spoiler in Model.Spoilers)
+            {
+                @await Html.PartialAsync("../Shared/_Spoiler", spoiler)
+            }
+
+        </ul>
+    </div>
+</div>

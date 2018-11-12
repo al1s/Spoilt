@@ -9,6 +9,7 @@
 <form asp-action="Create">
     <label asp-for="SpoilerText">Write your spoiler here: </label>
     <textarea asp-for="SpoilerText" class="materialize-textarea"></textarea>
+    <span asp-validation-for="SpoilerText" class="validate red-text"></span>
     <input type="hidden" asp-for="MovieID" readonly value="@ViewBag.Movie.ID" />
     <button value="Create" class="btn waves-effect waves-light" type="submit" name="action">
         Submit
