@@ -13,7 +13,7 @@ The web site is deployed on Azure web services and is available [HERE!](http://s
 
 ## API Documentation
 
-This site utilizes two APIs for its movie data. Initial movie data is provided by [The Open Movie Database](http://www.omdbapi.com/). Movie and spoiler data are saved to a custom API. [Click here to learn more about it.](http://spoiltapi.azurewebsites.net)
+This site utilizes two APIs for its movie data. Initial movie data is provided by [The Open Movie Database](http://www.omdbapi.com/). Movie and spoiler data are saved to a [custom API](https://github.com/riedmank/SpoiltAPI). [Click here to learn more about it.](http://spoiltapi.azurewebsites.net)
 
 ## Getting started
 
